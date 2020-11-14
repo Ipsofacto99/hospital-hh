@@ -1,0 +1,17 @@
+.bg-blue, th{
+    color: white;
+    background-color: rgb(17, 69, 148);
+}
+
+.btn-link{
+    color: rgb(17, 69, 148);
+}
+
+tr:nth-child(even) {
+    background-color: #e5e9fc;
+}
+
+::ng-deep .mat-sort-header-arrow {
+    color: #fff;
+    opacity: 1;
+}

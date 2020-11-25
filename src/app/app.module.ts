@@ -19,7 +19,7 @@ import { HomescreenComponent } from './homescreen/homescreen.component';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    HomescreenComponent
+    HomescreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +27,7 @@ import { HomescreenComponent } from './homescreen/homescreen.component';
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    NgbModule
+    NgbModule,
   
   ],
   providers: [],

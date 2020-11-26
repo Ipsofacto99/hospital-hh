@@ -1,0 +1,59 @@
+$blue: rgb(69, 87, 114);
+$back-color: #333131;
+$l-text: rgb(235, 235, 235);
+$table-even-row: #575757;
+$table-icons: $l-text;
+$blue-text: rgb(132, 153, 187);
+
+.page-container{
+    position: relative;
+    min-height: 82%;
+}
+
+input{
+    color: $l-text;
+}
+
+.bg-blue, th{
+    color: white;
+    background-color: $blue;
+}
+
+.color-blue{
+    color: $blue;
+}
+
+.blue-text{
+    color: $blue-text;
+}
+
+.l-text{
+    color: $l-text;
+}
+
+.btn-link{
+    color: $table-icons;
+}
+
+tr:nth-child(even) {
+    background-color: $table-even-row;
+    .btn-link{
+        color: $table-icons;
+    }
+}
+
+::ng-deep .mat-sort-header-arrow {
+    color: white;
+    opacity: 1;
+}
+
+.border{
+   border-color:  $blue;
+   border-width: 5px;
+}
+
+.item-container{
+    background-color: $back-color;
+    border-width: 1px;
+    border-radius: 5px;
+}

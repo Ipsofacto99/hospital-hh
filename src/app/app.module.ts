@@ -21,6 +21,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MedicosScreenComponent } from './medicos-screen/medicos-screen.component';
 
 
+import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +35,8 @@ import { MedicosScreenComponent } from './medicos-screen/medicos-screen.componen
     HomescreenComponent,
     TablaMedicosComponent,
     MedicosScreenComponent,
+    TablaUsuariosComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,

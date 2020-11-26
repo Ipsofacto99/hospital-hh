@@ -1,0 +1,91 @@
+
+<!--<div class="m-0 row">
+    <div class="col-lg-3 col-sm-12 text-center">
+        <img class="p-4" src="https://cnnespanol.cnn.com/wp-content/uploads/2019/12/s_64a163f16ecbb099e52f2f8271f73cbbfcfc9034be4d646f7375e4db1ca6f3d7_1573591952050_gettyimages-1153323735.jpg?quality=100&strip=info&w=320&h=240&crop=1" 
+        alt="" width="140" height="140">
+    </div>
+    <div class="col-lg-6 col-sm-12 text-center m-0 mt-4">
+        <h2 class="p-4"> {{ titulo }} </h2>
+    </div>
+    <div class="col-lg-3 col-sm-12 text-center m-0 mt-4">
+        <h6 class="p-4"> {{ usuario }} </h6>
+    </div>
+</div>-->
+
+<div class="page-container">
+<header></header>
+<div class="row m-4">
+<div class="item-container col p-4 mr-sm-3 mb-2"> 
+
+    <p class="blue-text"> Agregar/Modificar usuario </p>
+
+    <mat-form-field class="col-12">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="" #input>
+    </mat-form-field>
+
+    <mat-form-field class="col-md-6 col-sm-12">
+        <mat-label>Usuario</mat-label>
+        <input matInput placeholder="" #input>
+    </mat-form-field>
+
+    <mat-form-field class="col-md-6 col-sm-12">
+        <mat-label>Contraseña</mat-label>
+        <input matInput placeholder="" #input>
+    </mat-form-field>
+
+    <div class="row l-text">
+        <div class="col ml-2">
+            <mat-checkbox class="d-block p-2"> Administrador </mat-checkbox>
+            <mat-checkbox class="d-block p-2"> Médico </mat-checkbox>
+            <mat-checkbox class="d-block p-2"> <p class="d-inline text-wrap"> Médico con acceso a todas las recetas </p> </mat-checkbox>
+        </div>
+        <div class="col ml-2">
+            <mat-checkbox class="d-block p-2"> Mostrador de farmacia </mat-checkbox>
+            <mat-checkbox class="d-block p-2"> Responsable sanitario </mat-checkbox>
+        </div>
+    </div>
+    
+</div>
+
+<div class="item-container col p-4 ml-sm-3 mb-2"> 
+
+    <p class="blue-text"> Datos del médico </p>
+
+    <mat-form-field class="col-12">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="" #input>
+    </mat-form-field>
+
+    <mat-form-field class="col-12">
+        <mat-label>Especialidad</mat-label>
+        <input matInput placeholder="" #input>
+    </mat-form-field>
+
+    <mat-form-field class="col-md-6 col-sm-12">
+        <mat-label>Cedula</mat-label>
+        <input matInput placeholder="" #input>
+    </mat-form-field>
+
+    <mat-form-field class="col-md-6 col-sm-12">
+        <mat-label>Universidad</mat-label>
+        <input matInput placeholder="" #input>
+    </mat-form-field>
+
+    <mat-form-field class="col-12">
+        <mat-label>Dirección</mat-label>
+        <input matInput placeholder="" #input>
+    </mat-form-field>
+
+</div>
+</div>
+
+<div class="m-4  item-container"> 
+    <div class="d-flex flex-row-reverse pl-4 pr-4">
+        <button mat-flat-button class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue" (click)="guardar()"> Guardar </button>
+        <button mat-flat-button class="prl-1 mt-4 mb-3 col-lg-auto bg-blue" (click)="cancelar()"> Cancelar </button>
+    </div>
+</div>
+</div>
+
+<app-footer></app-footer>

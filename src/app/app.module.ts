@@ -13,6 +13,13 @@ import { LoginComponent } from './login/login.component';
 import { HomescreenComponent } from './homescreen/homescreen.component';
 import { TablaMedicosComponent } from './tabla-medicos/tabla-medicos.component';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +37,11 @@ import { TablaMedicosComponent } from './tabla-medicos/tabla-medicos.component';
     BrowserAnimationsModule,
     MaterialModule,
     NgbModule,
+    MatTableModule,
+    MatButtonModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatInputModule,
   
   ],
   providers: [],

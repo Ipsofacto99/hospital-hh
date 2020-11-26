@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MedicosScreenComponent } from './medicos-screen/medicos-screen.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     LoginComponent,
     HomescreenComponent,
     TablaMedicosComponent,
+    MedicosScreenComponent,
   ],
   imports: [
     BrowserModule,

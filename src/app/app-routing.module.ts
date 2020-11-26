@@ -3,7 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import {  HomescreenComponent } from './homescreen/homescreen.component'
 import {  AppComponent } from './app.component'
 import { TablaMedicosComponent } from './tabla-medicos/tabla-medicos.component';
+import { MedicosScreenComponent } from './medicos-screen/medicos-screen.component';
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'inicio',
+    pathMatch: 'full'
+  },
  
   {
   path: 'inicio',
@@ -11,7 +17,7 @@ const routes: Routes = [
 },
 {
   path: 'tablamedicos',
-  component: TablaMedicosComponent
+  component: MedicosScreenComponent
 }
 
  

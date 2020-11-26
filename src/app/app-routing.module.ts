@@ -5,7 +5,13 @@ import { AppComponent } from './app.component'
 import { TablaMedicosComponent } from './tabla-medicos/tabla-medicos.component';
 import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { MedicosScreenComponent } from './medicos-screen/medicos-screen.component';
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'inicio',
+    pathMatch: 'full'
+  },
  
   {
   path: 'inicio',
@@ -13,7 +19,7 @@ const routes: Routes = [
 },
 {
   path: 'tablamedicos',
-  component: TablaMedicosComponent
+  component: MedicosScreenComponent
 },
 {
   path: 'tabla-usuarios',

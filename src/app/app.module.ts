@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MedicosScreenComponent } from './medicos-screen/medicos-screen.component';
 
 
 import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
@@ -33,6 +34,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     LoginComponent,
     HomescreenComponent,
     TablaMedicosComponent,
+    MedicosScreenComponent,
     TablaUsuariosComponent,
     UsuariosComponent
   ],

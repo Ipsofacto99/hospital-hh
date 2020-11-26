@@ -2,12 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'tabla-medicos',
   templateUrl: './tabla-medicos.component.html',
-  styleUrls: ['./tabla-medicos.component.css']
+  styleUrls: ['./tabla-medicos.component.css', '../tabla-usuarios/tabla-usuarios.component.scss']
 })
 export class TablaMedicosComponent  {
 

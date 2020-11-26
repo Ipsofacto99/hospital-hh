@@ -1,9 +1,18 @@
+/*$blue: rgb(36, 85, 160);
+$back-color: #ebebeb;
+$l-text: rgb(39, 39, 39);
+$table-even-row: #d4d4d4;
+$table-icons: $l-text;
+$blue-text: rgb(59, 107, 185);*/
+
+
 $blue: rgb(69, 87, 114);
 $back-color: #333131;
 $l-text: rgb(235, 235, 235);
 $table-even-row: #575757;
 $table-icons: $l-text;
 $blue-text: rgb(132, 153, 187);
+
 
 .page-container{
     position: relative;
@@ -56,4 +65,8 @@ tr:nth-child(even) {
     background-color: $back-color;
     border-width: 1px;
     border-radius: 5px;
+}
+
+.filtro-bq{
+    background-color: $blue;
 }

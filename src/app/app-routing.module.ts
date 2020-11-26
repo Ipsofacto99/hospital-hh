@@ -18,7 +18,7 @@ const routes: Routes = [
   component: HomescreenComponent,
 },
 {
-  path: 'tablamedicos',
+  path: 'tabla-medicos',
   component: MedicosScreenComponent
 },
 {
@@ -26,7 +26,7 @@ const routes: Routes = [
   component: TablaUsuariosComponent
 },
 {
-  path: 'usuarios',
+  path: 'usuario',
   component: UsuariosComponent
 }
  

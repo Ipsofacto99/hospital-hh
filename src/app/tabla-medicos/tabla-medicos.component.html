@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="m-0 row">
+<!--<div class="m-0 row">
     <div class="col-lg-3 col-sm-12 text-center">
         <img class="p-4" src="https://cnnespanol.cnn.com/wp-content/uploads/2019/12/s_64a163f16ecbb099e52f2f8271f73cbbfcfc9034be4d646f7375e4db1ca6f3d7_1573591952050_gettyimages-1153323735.jpg?quality=100&strip=info&w=320&h=240&crop=1" 
         alt="" width="140" height="140">
@@ -10,11 +10,11 @@
     <div class="col-lg-3 col-sm-12 text-center m-0 mt-4">
         <h6 class="p-4"> {{ usuario }} </h6>
     </div>
-</div>
+</div>-->
 
-<div class="ml-4 mr-4 p-4 border-4 rounded border mb-3"> 
+<div class="m-4 item-container p-4"> 
     
-    <div class="row">
+    <!--<div class="row">
         <div class="col-12">
             <div class="form-group row">
                 <label for="staticNombre" class="col-sm-1 col-form-label">Nombre:</label>
@@ -50,9 +50,35 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <mat-form-field class="col-12">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="" #input>
+    </mat-form-field>
+
+    <mat-form-field class="col-xs-6 col-sm-4">
+        <mat-label>Cedula</mat-label>
+        <input matInput placeholder="" #input>
+    </mat-form-field>
+
+    <mat-form-field class="col-xs-6 col-sm-4">
+        <mat-label>Especialidad</mat-label>
+        <input matInput placeholder="" #input>
+    </mat-form-field>
+
+    <mat-form-field class="col-xs-6 col-sm-4">
+        <mat-label>Universidad</mat-label>
+        <input matInput placeholder="" #input>
+    </mat-form-field>
+
+</div>
+
+<div class="m-4 item-container p-4"> 
+
+    <p class="blue-text"> Listado de recetas </p>
+
+    <mat-form-field class="col-12 filtro-bq pt-2 mb-2">
         <mat-label>Buscar</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Información" #input class="input">
     </mat-form-field>
@@ -101,9 +127,11 @@
     </table>
 
     <mat-paginator  [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+</div>
 
+<div class="m-4 item-container"> 
     <div class="d-flex flex-row-reverse">
-        <button mat-flat-button class="prl-1 mt-4 col-lg-auto bg-blue" (click)="agregarReceta()">
+        <button mat-flat-button class="prl-1 m-4 col-lg-auto bg-blue" (click)="agregarReceta()">
             {{ btn }}
         </button>
     </div>

@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { HomescreenComponent } from './homescreen/homescreen.component';
+import { TablaMedicosComponent } from './tabla-medicos/tabla-medicos.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HomescreenComponent } from './homescreen/homescreen.component';
     FooterComponent,
     LoginComponent,
     HomescreenComponent,
+    TablaMedicosComponent,
   ],
   imports: [
     BrowserModule,

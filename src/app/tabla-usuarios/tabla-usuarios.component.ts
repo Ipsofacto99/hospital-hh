@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-tabla-usuarios',
   templateUrl: './tabla-usuarios.component.html',
-  styleUrls: ['./tabla-usuarios.component.css']
+  styleUrls: ['./tabla-usuarios.component.scss','../usuarios/usuarios.component.css']
 })
 export class TablaUsuariosComponent implements AfterViewInit {
 

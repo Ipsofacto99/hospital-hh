@@ -9,7 +9,7 @@ $my-app-theme: mat-dark-theme($my-app-primary, $my-app-accent);
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #fff; }
+body { position: relative; min-height: 100vh; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: rgb(82, 82, 82); }
 
 
 .example-card {
@@ -216,6 +216,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
    
    padding-bottom: 25px !important;
    font-size: 14px;
+
  }
 
  .footer-info{

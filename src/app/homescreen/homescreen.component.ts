@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'homescreen',
+  templateUrl: './homescreen.component.html',
+  styleUrls: ['./homescreen.component.scss']
 })
-export class AppComponent {
+export class HomescreenComponent  {
+
   user;
   title = 'hospital-hh';
   items = ['Usuario', 'Contraseña', 'Nombre']
@@ -17,4 +18,5 @@ export class AppComponent {
   getId(id: string){
     this.user = id;
   }
+
 }

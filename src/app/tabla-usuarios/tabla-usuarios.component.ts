@@ -1,14 +1,14 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'app-admin-usuarios',
-  templateUrl: './admin_usuarios.component.html',
-  styleUrls: ['./admin_usuarios.component.css']
+  selector: 'app-tabla-usuarios',
+  templateUrl: './tabla-usuarios.component.html',
+  styleUrls: ['./tabla-usuarios.component.css']
 })
-export class AdminUsuariosComponent implements AfterViewInit {
+export class TablaUsuariosComponent implements AfterViewInit {
 
   user: Prueba = { nombre: "Prueba", id: 1, usuario: "prueba", administrador: "prueba", medico: "prueba", medico_acesso_recetas: "prueba", responsable_sanitario: "prueba", mostrador_farmacia: "prueba" };
   user2: Prueba =  { nombre: "Prueba2", id: 1, usuario: "prueba2", administrador: "prueba", medico: "prueba", medico_acesso_recetas: "prueba", responsable_sanitario: "prueba", mostrador_farmacia: "prueba" };

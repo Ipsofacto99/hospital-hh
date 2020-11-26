@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { MatTableModule } from '@angular/material/table';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatButtonModule } from '@angular/material/button';
-import { AdminUsuariosComponent } from './AdminUsuariosComponent/admin_usuarios.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
+import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminUsuariosComponent
+    TablaUsuariosComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,8 @@ import {MatInputModule} from '@angular/material/input';
     MatSortModule,
     MatPaginatorModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

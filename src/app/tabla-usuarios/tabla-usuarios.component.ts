@@ -19,9 +19,6 @@ export class TablaUsuariosComponent implements AfterViewInit {
   
   displayedColumns = ["usuario", "nombre", "administrador", "medico", "medico_acesso_recetas", "responsable_sanitario", "mostrador_farmacia", "acciones"];
   dataSource: MatTableDataSource<any>;
-  usuario: string = "Usuario Prueba";
-  titulo: string = "Centenario Hospital Miguel Hidalgo";
-  btn: string = "Agregar Nuevo Usuario";
 
   constructor(){}
 

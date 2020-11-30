@@ -12,11 +12,10 @@ $l-text: rgb(235, 235, 235);
 $table-even-row: #575757;
 $table-icons: $l-text;
 $blue-text: rgb(132, 153, 187);
-
+$item-card-border-color: #4b4b4b;
 
 .page-container{
-    position: relative;
-    min-height: 82%;
+    min-height: 70%;
 }
 
 input{
@@ -26,6 +25,10 @@ input{
 .bg-blue, th{
     color: white;
     background-color: $blue;
+}
+
+.bg-gray{
+    background-color: $table-even-row;
 }
 
 .color-blue{
@@ -64,9 +67,18 @@ tr:nth-child(even) {
 .item-container{
     background-color: $back-color;
     border-width: 1px;
+    border-style: solid;
     border-radius: 5px;
+    border-color: $item-card-border-color;
+    color: $l-text;
 }
 
 .filtro-bq{
     background-color: $blue;
+}
+
+.text-area{
+    background-color: $l-text;
+    border-radius: 2px;
+    outline: none;
 }

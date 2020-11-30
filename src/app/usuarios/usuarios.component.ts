@@ -7,9 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuariosComponent implements OnInit {
 
-  usuario: string = "Usuario Prueba";
-  titulo: string = "Centenario Hospital Miguel Hidalgo";
-
   constructor() { }
 
   ngOnInit(): void {

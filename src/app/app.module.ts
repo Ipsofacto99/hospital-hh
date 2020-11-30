@@ -23,6 +23,8 @@ import { MedicosScreenComponent } from './medicos-screen/medicos-screen.componen
 
 import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AdministradorScreenComponent } from './administrador-screen/administrador-screen.component';
+import { RecetaComponent } from './receta/receta.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     TablaMedicosComponent,
     MedicosScreenComponent,
     TablaUsuariosComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    AdministradorScreenComponent,
+    RecetaComponent
   ],
   imports: [
     BrowserModule,

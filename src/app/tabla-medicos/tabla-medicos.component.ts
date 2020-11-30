@@ -13,18 +13,17 @@ export class TablaMedicosComponent  {
     user: Prueba = { folio: "Prueba", fecha: "11/14/97", medico: "prueba", paciente: "prueba"};
     user2: Prueba =  { folio: "Prueba2", fecha: "11/12/12", medico: "prueba2", paciente: "prueba2"};
     data: Prueba[] = [this.user, this.user2]; 
+
+    medico: Medico = {nombre: 'Prueba Prueba Prueba', universidad: 'Universidad', cedula: 'DNIDE092342', especialidad: 'Especialidad' }
   
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
     
     displayedColumns = ["folio", "fecha", "medico", "paciente","ver","modificar"];
     dataSource: MatTableDataSource<any>;
-    usuario: string = "Usuario Prueba";
-    titulo: string = "Centenario Hospital Miguel Hidalgo";
-    btn: string = "Generar Nueva Receta";
   
     constructor(){}
-  
+
     ngOnInit(): void{
       for (var i=0; i<12; i++){
         this.data.push(this.user)
@@ -58,6 +57,13 @@ export class TablaMedicosComponent  {
       console.log("nuevo")
     }
   
+  }
+
+  export interface Medico{
+    nombre: string
+    universidad: string
+    cedula: string
+    especialidad: string
   }
   
   export interface Prueba{

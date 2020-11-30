@@ -1,20 +1,5 @@
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!--<div class="m-0 row">
-    <div class="col-lg-3 col-sm-12 text-center">
-        <img class="p-4" src="https://cnnespanol.cnn.com/wp-content/uploads/2019/12/s_64a163f16ecbb099e52f2f8271f73cbbfcfc9034be4d646f7375e4db1ca6f3d7_1573591952050_gettyimages-1153323735.jpg?quality=100&strip=info&w=320&h=240&crop=1" 
-        alt="" width="140" height="140">
-    </div>
-    <div class="col-lg-6 col-sm-12 text-center m-0 mt-4">
-        <h2 class="p-4"> {{ titulo }} </h2>
-    </div>
-    <div class="col-lg-3 col-sm-12 text-center m-0 mt-4">
-        <h6 class="p-4"> {{ usuario }} </h6>
-    </div>
-</div>-->
 <div class="page-container">
-<header></header>
+<!--<header></header>-->
 <div class="m-4 p-4 item-container"> 
     <p class="blue-text"> Listado de usuarios/médicos </p>
 
@@ -73,14 +58,12 @@
 
     </table>
 
+    <div *ngIf="dataSource.data.length === 0" class="col-12 text-center bg-gray p-3"> No hay datos </div>
+
     <mat-paginator  [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
 
     <div class="d-flex flex-row-reverse">
-        <button mat-flat-button class="prl-1 mt-4 col-lg-auto bg-blue" (click)="agregarNuevo()">
-            {{ btn }}
-        </button>
+        <button mat-flat-button class="prl-1 mt-4 col-lg-auto bg-blue" (click)="agregarNuevo()"> Agregar nuevo usuario </button>
     </div>
 </div>
 </div>
-
-<app-footer></app-footer>

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomescreenComponent } from './homescreen/homescreen.component'
-import { AppComponent } from './app.component'
-import { TablaMedicosComponent } from './tabla-medicos/tabla-medicos.component';
 import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { MedicosScreenComponent } from './medicos-screen/medicos-screen.component';
+import { AdministradorScreenComponent } from './administrador-screen/administrador-screen.component';
+import { RecetaComponent } from './receta/receta.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -22,13 +23,24 @@ const routes: Routes = [
   component: MedicosScreenComponent
 },
 {
-  path: 'tabla-usuarios',
-  component: TablaUsuariosComponent
+  path: 'recetas',
+  component: RecetaComponent
 },
 {
-  path: 'usuario',
-  component: UsuariosComponent
-}
+  path: 'administrador',
+  component: AdministradorScreenComponent,
+  children: [
+    {
+      path: 'tabla-usuarios',
+      component: TablaUsuariosComponent
+    },
+    {
+      path: 'usuario',
+      component: UsuariosComponent
+    }
+  ]
+},
+
  
 ];
 

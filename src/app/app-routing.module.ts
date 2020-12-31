@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomescreenComponent } from './homescreen/homescreen.component'
+import { HomescreenComponent } from './homescreen/homescreen.component';
 import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { MedicosScreenComponent } from './medicos-screen/medicos-screen.component';
@@ -11,42 +11,39 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'inicio',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
- 
-  {
-  path: 'inicio',
-  component: HomescreenComponent,
-},
-{
-  path: 'tabla-medicos',
-  component: MedicosScreenComponent
-},
-{
-  path: 'recetas',
-  component: RecetaComponent
-},
-{
-  path: 'administrador',
-  component: AdministradorScreenComponent,
-  children: [
-    {
-      path: 'tabla-usuarios',
-      component: TablaUsuariosComponent
-    },
-    {
-      path: 'usuario',
-      component: UsuariosComponent
-    }
-  ]
-},
 
- 
+  {
+    path: 'inicio',
+    component: HomescreenComponent,
+  },
+  {
+    path: 'tabla-medicos',
+    component: MedicosScreenComponent,
+  },
+  {
+    path: 'recetas',
+    component: RecetaComponent,
+  },
+  {
+    path: 'administrador',
+    component: AdministradorScreenComponent,
+    children: [
+      {
+        path: 'tabla-usuarios',
+        component: TablaUsuariosComponent,
+      },
+      {
+        path: 'usuario',
+        component: UsuariosComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
-
+export class AppRoutingModule {}

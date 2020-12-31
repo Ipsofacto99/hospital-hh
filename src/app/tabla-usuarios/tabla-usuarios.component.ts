@@ -1,35 +1,66 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { Usuario_tabla } from '../models/objects';
+import { API_Service } from '../services/api-service';
+
 @Component({
   selector: 'app-tabla-usuarios',
   templateUrl: './tabla-usuarios.component.html',
-  styleUrls: ['./tabla-usuarios.component.scss','../usuarios/usuarios.component.css']
+  styleUrls: [
+    './tabla-usuarios.component.scss',
+    '../usuarios/usuarios.component.css',
+  ],
 })
-export class TablaUsuariosComponent implements AfterViewInit {
-
-  user: Prueba = { nombre: "Prueba", id: 1, usuario: "prueba", administrador: "prueba", medico: "prueba", medico_acesso_recetas: "prueba", responsable_sanitario: "prueba", mostrador_farmacia: "prueba" };
-  user2: Prueba =  { nombre: "Prueba2", id: 1, usuario: "prueba2", administrador: "prueba", medico: "prueba", medico_acesso_recetas: "prueba", responsable_sanitario: "prueba", mostrador_farmacia: "prueba" };
-  data: Prueba[] = [this.user, this.user2] 
-
+export class TablaUsuariosComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  
-  displayedColumns = ["usuario", "nombre", "administrador", "medico", "medico_acesso_recetas", "responsable_sanitario", "mostrador_farmacia", "acciones"];
+
+  displayedColumns = [
+    'usuario',
+    'nombre',
+    'administrador',
+    'medico',
+    'medico_acesso_recetas',
+    'responsable_sanitario',
+    'mostrador_farmacia',
+    'acciones',
+  ];
   dataSource: MatTableDataSource<any>;
 
-  constructor(){}
+  data: Usuario_tabla[] = [];
 
-  ngOnInit(): void{
-    for (var i=0; i<12; i++){
-      this.data.push(this.user)
-    }
-    this.dataSource = new MatTableDataSource(this.data);
+  constructor(private httpClient: HttpClient) {}
+
+  apiService: API_Service;
+
+  async ngOnInit() {
+    this.dataSource = new MatTableDataSource();
+    this.apiService = new API_Service(this.httpClient);
+    await this.apiService.start({ username: 'carrot', password: '1234' });
+    this.apiService.obtenerUsuarios().subscribe((resp) => {
+      resp.map((item) => {
+        console.log(item);
+        this.data.push({
+          nombre: item.first_name + ' ' + item.last_name,
+          id: item.id,
+          usuario: item.username,
+          administrador: '',
+          medico: '',
+          medico_acesso_recetas: '',
+          mostrador_farmacia: '',
+          responsable_sanitario: '',
+        });
+      });
+      this.dataSource = new MatTableDataSource(this.data);
+      this.AfterViewInit();
+    });
   }
 
-  ngAfterViewInit(){
+  AfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
@@ -43,27 +74,15 @@ export class TablaUsuariosComponent implements AfterViewInit {
     }
   }
 
-  editar(id){
-    console.log(id)
+  editar(id) {
+    console.log(id);
   }
 
-  eliminar(id){
-    console.log(id)
+  eliminar(id) {
+    console.log(id);
   }
 
-  agregarNuevo(){
-    console.log("nuevo")
+  agregarNuevo() {
+    console.log('nuevo');
   }
-
-}
-
-export interface Prueba{
-  nombre: string 
-  id: number
-  usuario: string
-  administrador: string
-  medico: string
-  medico_acesso_recetas: string
-  responsable_sanitario: string
-  mostrador_farmacia: string
 }

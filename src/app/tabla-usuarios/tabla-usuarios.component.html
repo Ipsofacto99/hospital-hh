@@ -1,69 +1,94 @@
 <div class="page-container">
-<!--<header></header>-->
-<div class="m-4 p-4 item-container"> 
-    <p class="blue-text"> Listado de usuarios/médicos </p>
+  <div class="m-4 p-4 item-container">
+    <p class="blue-text">Listado de usuarios/médicos</p>
 
     <mat-form-field class="col-12 filtro-bq pt-2 mb-2">
-        <mat-label>Buscar</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Información" #input class="input">
+      <mat-label>Buscar</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Información"
+        #input
+        class="input"
+      />
     </mat-form-field>
 
     <table mat-table [dataSource]="dataSource" class="col-12" matSort>
+      <ng-container matColumnDef="usuario">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header matSortActive="Usuario"> Usuario </th>
+        <td mat-cell *matCellDef="let row">{{ row.usuario }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="usuario">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header matSortActive="Usuario"> Usuario </th>
-            <td mat-cell *matCellDef="let row"> {{ row.usuario }} </td>
-        </ng-container>
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <td mat-cell *matCellDef="let row">{{ row.nombre }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-            <td mat-cell *matCellDef="let row"> {{ row.nombre }} </td>
-        </ng-container>
+      <ng-container matColumnDef="administrador">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Administrador</th>
+        <td mat-cell *matCellDef="let row">{{ row.administrador }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="administrador">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Administrador </th>
-            <td mat-cell *matCellDef="let row"> {{ row.administrador }} </td>
-        </ng-container>
+      <ng-container matColumnDef="medico">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Médico</th>
+        <td mat-cell *matCellDef="let row">{{ row.medico }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="medico">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Médico </th>
-            <td mat-cell *matCellDef="let row"> {{ row.medico }} </td>
-        </ng-container>
+      <ng-container matColumnDef="medico_acesso_recetas">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Médico con acesso <br />
+          a todas las recetas
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.medico_acesso_recetas }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="medico_acesso_recetas">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Médico con acesso <br> a todas las recetas </th>
-            <td mat-cell *matCellDef="let row"> {{ row.medico_acesso_recetas }} </td>
-        </ng-container>
+      <ng-container matColumnDef="responsable_sanitario">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Responsable Sanitario
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.responsable_sanitario }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="responsable_sanitario">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Responsable Sanitario </th>
-            <td mat-cell *matCellDef="let row"> {{ row.responsable_sanitario }} </td>
-        </ng-container>
+      <ng-container matColumnDef="mostrador_farmacia">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Mostrador Farmacia
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.mostrador_farmacia }}</td>
+      </ng-container>
 
-        <ng-container matColumnDef="mostrador_farmacia">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Mostrador Farmacia </th>
-            <td mat-cell *matCellDef="let row"> {{ row.mostrador_farmacia }} </td>
-        </ng-container>
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let row">
+          <button class="m-2 btn btn-link" (click)="editar(row.usuario)">
+            <i class="fa fa-edit"></i>
+          </button>
+          <button class="m-2 btn btn-link" (click)="eliminar(row.usuario)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </ng-container>
 
-        <ng-container matColumnDef="acciones">
-            <th mat-header-cell *matHeaderCellDef> Acciones </th>
-            <td mat-cell *matCellDef="let row"> 
-                <button class="m-2 btn btn-link" (click)="editar(row.usuario)"><i class="fa fa-edit"></i></button>
-                <button class="m-2 btn btn-link" (click)="eliminar(row.usuario)"><i class="fa fa-trash"></i></button>
-            </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
 
-    <div *ngIf="dataSource.data.length === 0" class="col-12 text-center bg-gray p-3"> No hay datos </div>
+    <div
+      *ngIf="dataSource.data.length === 0"
+      class="col-12 text-center bg-gray p-3"
+    >
+      No hay datos
+    </div>
 
-    <mat-paginator  [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
 
     <div class="d-flex flex-row-reverse">
-        <button mat-flat-button class="prl-1 mt-4 col-lg-auto bg-blue" (click)="agregarNuevo()"> Agregar nuevo usuario </button>
+      <button
+        mat-flat-button
+        class="prl-1 mt-4 col-lg-auto bg-blue"
+        (click)="agregarNuevo()"
+      >
+        Agregar nuevo usuario
+      </button>
     </div>
-</div>
+  </div>
 </div>

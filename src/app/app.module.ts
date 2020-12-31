@@ -26,6 +26,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { AdministradorScreenComponent } from './administrador-screen/administrador-screen.component';
 import { RecetaComponent } from './receta/receta.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { RecetaComponent } from './receta/receta.component';
     MatSortModule,
     MatPaginatorModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

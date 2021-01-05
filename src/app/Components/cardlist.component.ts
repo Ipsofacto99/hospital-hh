@@ -3,6 +3,7 @@ import {Component, Input, Output, EventEmitter, HostListener} from '@angular/cor
 @Component({
 selector: 'cardlist',
 templateUrl: './templates/cardlist-component.html',
+styleUrls: ['../../assets/css/app-styles.scss'],
 })
 
 export class cardlistcomponent {

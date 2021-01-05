@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomescreenComponent } from './homescreen/homescreen.component';
 import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { MedicosScreenComponent } from './medicos-screen/medicos-screen.component';
+import { RecetasScreenComponent } from './recetas-screen/recetas-screen.component';
 import { AdministradorScreenComponent } from './administrador-screen/administrador-screen.component';
 import { RecetaComponent } from './receta/receta.component';
 
@@ -19,11 +19,11 @@ const routes: Routes = [
     component: HomescreenComponent,
   },
   {
-    path: 'tabla-medicos',
-    component: MedicosScreenComponent,
+    path: 'tabla-recetas',
+    component: RecetasScreenComponent,
   },
   {
-    path: 'recetas',
+    path: 'receta',
     component: RecetaComponent,
   },
   {

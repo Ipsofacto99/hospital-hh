@@ -1,223 +1,237 @@
-<div class="page-container">
-    <header></header>
+<div class="page-container p-4">
+  <div class="item-container">
+    <div class="col-12 d-flex flex-row-reverse pt-2">
+      <p class="p-1 m-0">{{ receta.folio }}</p>
+      <p class="blue-text p-1 m-0">Folio:</p>
+    </div>
+    <div class="col-12 d-flex flex-row-reverse pb-2">
+      <p class="p-1 m-0">{{ receta.fecha }}</p>
+      <p class="blue-text p-1 m-0">Fecha/Hora:</p>
+    </div>
+  </div>
 
-<div class="item-container mr-4 ml-4 mt-4"> 
-        <div class="col-12 d-flex flex-row-reverse pt-2">  <p class="p-1 m-0"> {{ folio }} </p> <p class="blue-text p-1 m-0"> Folio: </p> </div>
-        <div class="col-12 d-flex flex-row-reverse pb-2">  <p class="p-1 m-0"> {{ fecha }} </p> <p class="blue-text p-1 m-0"> Fecha/Hora: </p> </div>
-</div>
+  <div class="row mt-2 mb-2">
+    <div class="item-container col p-4 ml-3 mr-2">
+      <p class="blue-text">Datos del paciente</p>
 
-<div class="row mr-3 ml-3">
+      <mat-form-field class="col-12">
+        <mat-label>CURP</mat-label>
+        <input matInput placeholder="" [(ngModel)]="p_curp" />
+      </mat-form-field>
 
-    <div class="item-container col p-4 m-2"> 
-    
-        <p class="blue-text"> Datos del paciente </p>
+      <mat-form-field class="col-12">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="" [(ngModel)]="p_nombre" />
+      </mat-form-field>
 
-        <mat-form-field class="col-12">
-            <mat-label>CURP</mat-label>
-            <input matInput placeholder="" #input>
-        </mat-form-field>
-    
-        <mat-form-field class="col-12">
+      <mat-form-field class="col-12">
+        <mat-label>Domicilio</mat-label>
+        <input matInput placeholder="" [(ngModel)]="p_domicilio" />
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6 col-sm-12">
+        <mat-label>Edad</mat-label>
+        <input matInput placeholder="" [(ngModel)]="p_edad" type="number" />
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6 col-sm-12">
+        <mat-label>Sexo</mat-label>
+        <input matInput placeholder="" [(ngModel)]="p_sexo" />
+      </mat-form-field>
+    </div>
+
+    <div class="item-container col p-4 mr-3">
+      <p class="blue-text">Datos del médico</p>
+
+      <mat-form-field class="col-12">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="" [(ngModel)]="m_nombre" />
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Especialidad</mat-label>
+        <input matInput placeholder="" [(ngModel)]="m_especialidad" />
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Cedula</mat-label>
+        <input matInput placeholder="" [(ngModel)]="m_cedula" />
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6 col-sm-12">
+        <mat-label>Universidad</mat-label>
+        <input matInput placeholder="" [(ngModel)]="m_universidad" />
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6 col-sm-12">
+        <mat-label>Turno</mat-label>
+        <input matInput placeholder="" [(ngModel)]="m_turno" />
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Dirección</mat-label>
+        <input matInput placeholder="" [(ngModel)]="m_direccion" />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="item-container p-4">
+    <p class="blue-text">Diagnóstico</p>
+    <mat-form-field class="col">
+      <input matInput placeholder="" [(ngModel)]="diagnostico" />
+    </mat-form-field>
+  </div>
+
+  <div class="item-container p-4 mt-2">
+    <p class="blue-text">Medicamentos</p>
+
+    <div class="row col-12 p-0 m-0">
+      <div class="col-md-10 col-sm-12 p-0 m-0">
+        <div class="row col-12 p-0 m-0">
+          <mat-form-field class="col">
             <mat-label>Nombre</mat-label>
-            <input matInput placeholder="" #input>
-        </mat-form-field>
-    
-        <mat-form-field class="col-12">
-            <mat-label>Domicilio</mat-label>
-            <input matInput placeholder="" #input>
-        </mat-form-field>
-    
-        <mat-form-field class="col-md-6 col-sm-12">
-            <mat-label>Edad</mat-label>
-            <input matInput placeholder="" #input type='number'>
-        </mat-form-field>
+            <input matInput placeholder="" [(ngModel)]="nombre" />
+          </mat-form-field>
 
-        <mat-form-field class="col-md-6 col-sm-12">
-            <mat-label>Sexo</mat-label>
-            <input matInput placeholder="" #input>
-        </mat-form-field>
-        
-    </div>
-    
-    <div class="item-container col p-4 m-2"> 
-    
-        <p class="blue-text"> Datos del médico </p>
-    
-        <mat-form-field class="col-12">
-            <mat-label>Nombre</mat-label>
-            <input matInput placeholder="" #input>
-        </mat-form-field>
-    
-        <mat-form-field class="col-12">
-            <mat-label>Especialidad</mat-label>
-            <input matInput placeholder="" #input>
-        </mat-form-field>
-    
-        <mat-form-field class="col-12">
-            <mat-label>Cedula</mat-label>
-            <input matInput placeholder="" #input>
-        </mat-form-field>
-    
-        <mat-form-field class="col-md-6 col-sm-12">
-            <mat-label>Universidad</mat-label>
-            <input matInput placeholder="" #input>
-        </mat-form-field>
+          <mat-form-field class="col">
+            <mat-label>Clave</mat-label>
+            <input matInput placeholder="" [(ngModel)]="clave" />
+          </mat-form-field>
 
-        <mat-form-field class="col-md-6 col-sm-12">
-            <mat-label>Turno</mat-label>
-            <input matInput placeholder="" #input>
-        </mat-form-field>
-    
-        <mat-form-field class="col-12">
-            <mat-label>Dirección</mat-label>
-            <input matInput placeholder="" #input>
-        </mat-form-field>
-    
-    </div>
-</div>
+          <mat-form-field class="col">
+            <mat-label>Presentacion</mat-label>
+            <input matInput placeholder="" [(ngModel)]="presentacion" />
+          </mat-form-field>
 
-    <div class="item-container p-4 mr-4 ml-4 mb-2"> 
-    
-        <p class="blue-text"> Diagnóstico </p>
-
-        <textarea class="input col-12 text-area p-3"></textarea>
-        
-    </div>
-
-    <div class="item-container p-4 mr-4 ml-4 mb-2"> 
-    
-        <p class="blue-text"> Medicamentos </p>
+          <mat-form-field class="col">
+            <mat-label>Empaque</mat-label>
+            <input matInput placeholder="" [(ngModel)]="empaque" />
+          </mat-form-field>
+        </div>
 
         <div class="row col-12 p-0 m-0">
-            <div class="col-md-10 col-sm-12 p-0 m-0">
-                <div class="row col-12 p-0 m-0">
+          <mat-form-field class="col">
+            <mat-label>Cantidad</mat-label>
+            <input matInput placeholder="" [(ngModel)]="cantidad" />
+          </mat-form-field>
 
-                    <mat-form-field class="col">
-                        <mat-label>Nombre</mat-label>
-                        <input matInput placeholder="" #input>
-                    </mat-form-field>
-            
-                    <mat-form-field class="col">
-                        <mat-label>Clave</mat-label>
-                        <input matInput placeholder="" #input>
-                    </mat-form-field>
-            
-                    <mat-form-field class="col">
-                        <mat-label>Presentacion</mat-label>
-                        <input matInput placeholder="" #input>
-                    </mat-form-field>
-            
-                    <mat-form-field class="col">
-                        <mat-label>Empaque</mat-label>
-                        <input matInput placeholder="" #input>
-                    </mat-form-field>
-                
-                </div>
+          <mat-form-field class="col">
+            <mat-label>Dosificacion</mat-label>
+            <input matInput placeholder="" [(ngModel)]="dosificacion" />
+          </mat-form-field>
 
-                <div class="row col-12 p-0 m-0">
+          <mat-form-field class="col">
+            <mat-label>Dias de Administración</mat-label>
+            <input matInput placeholder="" [(ngModel)]="dias" />
+          </mat-form-field>
 
-                    <mat-form-field class="col">
-                        <mat-label>Cantidad</mat-label>
-                        <input matInput placeholder="" #input>
-                    </mat-form-field>
-            
-                    <mat-form-field class="col">
-                        <mat-label>Dosificacion</mat-label>
-                        <input matInput placeholder="" #input>
-                    </mat-form-field>
-            
-                    <mat-form-field class="col">
-                        <mat-label>Dias de Administración</mat-label>
-                        <input matInput placeholder="" #input>
-                    </mat-form-field>
-            
-                    <mat-form-field class="col">
-                        <mat-label> Vía de Administación</mat-label>
-                        <input matInput placeholder="" #input>
-                    </mat-form-field>
-
-                </div>
-            </div>
-    
-            <div class="col-2">
-                <button mat-flat-button class="p-3 m-4 col-lg-auto bg-blue" (click)="agregar()"> Agregar </button>
-            </div>
-
+          <mat-form-field class="col">
+            <mat-label> Vía de Administación</mat-label>
+            <input matInput placeholder="" [(ngModel)]="viaAdministracion" />
+          </mat-form-field>
         </div>
-        
-        <table mat-table [dataSource]="dataSource" class="col-12 mt-4">
+      </div>
 
-            <ng-container matColumnDef="nombre">
-                <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                <td mat-cell *matCellDef="let row"> {{ row.nombre }} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="clave">
-                <th mat-header-cell *matHeaderCellDef> Clave </th>
-                <td mat-cell *matCellDef="let row"> {{ row.clave }} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="presentacion">
-                <th mat-header-cell *matHeaderCellDef> Presentacion </th>
-                <td mat-cell *matCellDef="let row"> {{ row.presentacion }} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="empaque">
-                <th mat-header-cell *matHeaderCellDef> Empaque </th>
-                <td mat-cell *matCellDef="let row"> {{ row.empaque }} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="cantidad">
-                <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-                <td mat-cell *matCellDef="let row"> {{ row.cantidad }} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="dosificacion">
-                <th mat-header-cell *matHeaderCellDef> Dosificacion </th>
-                <td mat-cell *matCellDef="let row"> {{ row.empaque }} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="dias">
-                <th mat-header-cell *matHeaderCellDef> No. días </th>
-                <td mat-cell *matCellDef="let row"> {{ row.dias }} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="viaAdministracion">
-                <th mat-header-cell *matHeaderCellDef> Vía de administración </th>
-                <td mat-cell *matCellDef="let row"> {{ row.viaAdministracion }} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="acciones">
-                <th mat-header-cell *matHeaderCellDef> Acciones </th>
-                <td mat-cell *matCellDef="let row"> 
-                    <button class="m-2 btn btn-link" (click)="quitar(row.nombre)"><i class="fa fa-trash"></i></button>
-                </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-        </table>
-
-        <div *ngIf="data.length === 0" class="col-12 text-center bg-gray p-3"> No hay medicamentos en la lista </div>
-            
+      <div class="col-2">
+        <button
+          mat-flat-button
+          class="p-3 m-4 col-lg-auto bg-blue"
+          (click)="agregar()"
+        >
+          Agregar
+        </button>
+      </div>
     </div>
 
-    <div class="item-container p-4 mr-4 ml-4 mb-2"> 
-    
-        <p class="blue-text"> Indicaciones </p>
+    <table mat-table [dataSource]="dataSource" class="col-12 mt-4">
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let row">{{ row.nombre }}</td>
+      </ng-container>
 
-        <textarea class="input col-12 text-area p-3"></textarea>
-        
+      <ng-container matColumnDef="clave">
+        <th mat-header-cell *matHeaderCellDef>Clave</th>
+        <td mat-cell *matCellDef="let row">{{ row.clave }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="presentacion">
+        <th mat-header-cell *matHeaderCellDef>Presentacion</th>
+        <td mat-cell *matCellDef="let row">{{ row.presentacion }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="empaque">
+        <th mat-header-cell *matHeaderCellDef>Empaque</th>
+        <td mat-cell *matCellDef="let row">{{ row.empaque }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+        <td mat-cell *matCellDef="let row">{{ row.cantidad }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dosificacion">
+        <th mat-header-cell *matHeaderCellDef>Dosificacion</th>
+        <td mat-cell *matCellDef="let row">{{ row.dosificacion }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dias">
+        <th mat-header-cell *matHeaderCellDef>No. días</th>
+        <td mat-cell *matCellDef="let row">{{ row.dias }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="viaAdministracion">
+        <th mat-header-cell *matHeaderCellDef>Vía de administración</th>
+        <td mat-cell *matCellDef="let row">{{ row.viaAdministracion }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let row">
+          <button class="m-2 btn btn-link" (click)="quitar(row.index)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <div *ngIf="receta.medicamentos.length === 0" class="col-12 text-center bg-gray p-3">
+      No hay medicamentos en la lista
     </div>
-    
-    <div class="item-container mr-4 ml-4 mb-4"> 
-        <div class="d-flex flex-row-reverse pl-4 pr-4">
-            <button mat-flat-button class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue" (click)="pdf()"> PDF </button>
-            <button mat-flat-button class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue" (click)="guardar()"> Guardar </button>
-            <button mat-flat-button class="prl-1 mt-4 mb-3 col-lg-auto bg-blue" (click)="cancelar()"> Cancelar </button>
-        </div>
+  </div>
+
+  <div class="item-container p-4 mt-2">
+    <p class="blue-text">Indicaciones</p>
+    <mat-form-field class="col">
+      <input matInput placeholder="" [(ngModel)]="indicaciones" />
+    </mat-form-field>
+  </div>
+
+  <div class="item-container mt-2">
+    <div class="d-flex flex-row-reverse pl-4 pr-4">
+      <button
+        mat-flat-button
+        class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue"
+        (click)="pdf()"
+      >
+        PDF
+      </button>
+      <button
+        mat-flat-button
+        class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue"
+        (click)="guardar()"
+      >
+        Guardar
+      </button>
+      <button
+        mat-flat-button
+        class="prl-1 mt-4 mb-3 col-lg-auto bg-blue"
+        routerLink="../tabla-recetas"
+      >
+        Cancelar
+      </button>
     </div>
+  </div>
 </div>
-    
-<app-footer></app-footer>

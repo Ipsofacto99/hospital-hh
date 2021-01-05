@@ -1,76 +1,228 @@
+<!--<div class="page-container text-center">
+  <div class="flat">
+    <p class="megatext">¡Hola! Bienvenido.</p>
+    <div class="d-flex justify-content-center p-4">
+      <div class="row col-12 m-4">
+        <div class="cardlist-container col p-0 m-2">
+          <mat-card class="example-card h-100">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title class="card-ttl">Acceso Médico</mat-card-title>
+              <mat-card-subtitle>Creación recetas médicas</mat-card-subtitle>
+            </mat-card-header>
+            <img
+              mat-card-image
+              src="https://i.ibb.co/M7gvcFt/HH-CARDS-0004-Objeto-inteligente-vectorial.png"
+              alt="medico"
+            />
+            <mat-card-content> </mat-card-content>
+            <mat-card-actions>
+              <button id="medico" class="btn-login" (click)="toggle($event)">
+                INICIAR SESIÓN
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div class="cardlist-container col p-0 m-2">
+          <mat-card class="example-card h-100">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title class="card-ttl">Acceso Farmacia</mat-card-title>
+              <mat-card-subtitle>Adminstración medicamentos</mat-card-subtitle>
+            </mat-card-header>
+            <img
+              mat-card-image
+              src="https://i.ibb.co/KhzQStC/HH-CARDS-0003-Objeto-inteligente-vectorial.png"
+              alt="farmacia"
+            />
+            <mat-card-content> </mat-card-content>
+            <mat-card-actions>
+              <button id="farmacia" class="btn-login" (click)="toggle($event)">
+                INICIAR SESIÓN
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div class="cardlist-container col p-0 m-2">
+          <mat-card class="example-card h-100">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title class="card-ttl">Acceso Recepción</mat-card-title>
+              <mat-card-subtitle>Alta de pacientes</mat-card-subtitle>
+            </mat-card-header>
+            <img
+              mat-card-image
+              src="https://i.ibb.co/MnCrtzS/HH-CARDS-0002-Objeto-inteligente-vectorial.png"
+              alt="recepcion"
+            />
+            <mat-card-content> </mat-card-content>
+            <mat-card-actions>
+              <button id="recepcion" class="btn-login" (click)="toggle($event)">
+                INICIAR SESIÓN
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div class="cardlist-container col p-0 m-2">
+          <mat-card class="example-card h-100">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title class="card-ttl"
+                >Acceso Responsable Sanitario</mat-card-title
+              >
+              <mat-card-subtitle>Control de medicamentos</mat-card-subtitle>
+            </mat-card-header>
+            <img
+              mat-card-image
+              src="https://i.ibb.co/8zhgmkN/HH-CARDS-0001-Objeto-inteligente-vectorial.png"
+              alt="responsable"
+            />
+            <mat-card-content> </mat-card-content>
+            <mat-card-actions>
+              <button
+                id="responsable"
+                class="btn-login"
+                (click)="toggle($event)"
+              >
+                INICIAR SESIÓN
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div class="cardlist-container col p-0 m-2">
+          <mat-card class="example-card h-100">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title class="card-ttl"
+                >Acceso Administrador</mat-card-title
+              >
+              <mat-card-subtitle
+                >Control del sistema y permisos</mat-card-subtitle
+              >
+            </mat-card-header>
+            <img
+              mat-card-image
+              src="https://i.ibb.co/D5rPSr7/HH-CARDS-0000-Objeto-inteligente-vectorial.png"
+              alt="administrador"
+            />
+            <mat-card-content> </mat-card-content>
+            <mat-card-actions>
+              <button id="admin" class="btn-login" (click)="toggle($event)">
+                INICIAR SESIÓN
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
 
-<div class="flat"><p class="megatext">¡Hola! Bienvenido.</p></div>
+
+<div class="flat">
+  <p class="megatext">¡Hola! Bienvenido.</p>
+</div>
 <div class="card-component">
-    <div class="   cardlist-container"><mat-card class="example-card">
+  <div class="cardlist-container">
+    <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title class="card-ttl">Acceso Médico</mat-card-title>
         <mat-card-subtitle>Creación recetas médicas</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="https://i.ibb.co/M7gvcFt/HH-CARDS-0004-Objeto-inteligente-vectorial.png" alt="medico">
-      <mat-card-content>
-     
-      </mat-card-content>
+      <img
+        mat-card-image
+        src="https://i.ibb.co/M7gvcFt/HH-CARDS-0004-Objeto-inteligente-vectorial.png"
+        alt="medico"
+      />
+      <mat-card-content> </mat-card-content>
       <mat-card-actions>
-        <button id="medico" class="btn-login" (click)="toggle($event)">INICIAR SESIÓN</button>
-    
+        <button id="medico" class="btn-login" (click)="toggle($event)">
+          INICIAR SESIÓN
+        </button>
       </mat-card-actions>
-    </mat-card></div>
-    <div class="   cardlist-container"><mat-card class="example-card">
+    </mat-card>
+  </div>
+  <div class="cardlist-container">
+    <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title class="card-ttl">Acceso Farmacia</mat-card-title>
         <mat-card-subtitle>Adminstración medicamentos</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="https://i.ibb.co/KhzQStC/HH-CARDS-0003-Objeto-inteligente-vectorial.png" alt="farmacia">
-      <mat-card-content>
-     
-      </mat-card-content>
+      <img
+        mat-card-image
+        src="https://i.ibb.co/KhzQStC/HH-CARDS-0003-Objeto-inteligente-vectorial.png"
+        alt="farmacia"
+      />
+      <mat-card-content> </mat-card-content>
       <mat-card-actions>
-        <button id="farmacia"  class="btn-login" (click)="toggle($event)">INICIAR SESIÓN</button>
+        <button id="farmacia" class="btn-login" (click)="toggle($event)">
+          INICIAR SESIÓN
+        </button>
       </mat-card-actions>
-    </mat-card></div>
-    <div class="   cardlist-container"><mat-card class="example-card">
+    </mat-card>
+  </div>
+  <div class="cardlist-container">
+    <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title class="card-ttl">Acceso Recepción</mat-card-title>
         <mat-card-subtitle>Alta de pacientes</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="https://i.ibb.co/MnCrtzS/HH-CARDS-0002-Objeto-inteligente-vectorial.png" alt="recepcion">
-      <mat-card-content>
-     
-      </mat-card-content>
+      <img
+        mat-card-image
+        src="https://i.ibb.co/MnCrtzS/HH-CARDS-0002-Objeto-inteligente-vectorial.png"
+        alt="recepcion"
+      />
+      <mat-card-content> </mat-card-content>
       <mat-card-actions>
-        <button id="recepcion" class="btn-login" (click)="toggle($event)">INICIAR SESIÓN</button>
+        <button id="recepcion" class="btn-login" (click)="toggle($event)">
+          INICIAR SESIÓN
+        </button>
       </mat-card-actions>
-    </mat-card></div>
-    <div class="   cardlist-container"><mat-card class="example-card">
+    </mat-card>
+  </div>
+  <div class="cardlist-container">
+    <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title class="card-ttl">Acceso Responsable Sanitario</mat-card-title>
+        <mat-card-title class="card-ttl"
+          >Acceso Responsable Sanitario</mat-card-title
+        >
         <mat-card-subtitle>Control de medicamentos</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="https://i.ibb.co/8zhgmkN/HH-CARDS-0001-Objeto-inteligente-vectorial.png" alt="responsable">
-      <mat-card-content>
-      
-      </mat-card-content>
+      <img
+        mat-card-image
+        src="https://i.ibb.co/8zhgmkN/HH-CARDS-0001-Objeto-inteligente-vectorial.png"
+        alt="responsable"
+      />
+      <mat-card-content> </mat-card-content>
       <mat-card-actions>
-        <button id="responsable"  class="btn-login" (click)="toggle($event)">INICIAR SESIÓN</button>
+        <button id="responsable" class="btn-login" (click)="toggle($event)">
+          INICIAR SESIÓN
+        </button>
       </mat-card-actions>
-    </mat-card></div>
-    <div class="   cardlist-container"><mat-card class="example-card">
+    </mat-card>
+  </div>
+  <div class="cardlist-container">
+    <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title class="card-ttl">Acceso Administrador</mat-card-title>
         <mat-card-subtitle>Control del sistema y permisos</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="https://i.ibb.co/D5rPSr7/HH-CARDS-0000-Objeto-inteligente-vectorial.png" alt="administrador">
-      <mat-card-content>
-  
-      </mat-card-content>
+      <img
+        mat-card-image
+        src="https://i.ibb.co/D5rPSr7/HH-CARDS-0000-Objeto-inteligente-vectorial.png"
+        alt="administrador"
+      />
+      <mat-card-content> </mat-card-content>
       <mat-card-actions>
-        <button id="admin" class="btn-login" (click)="toggle($event)">INICIAR SESIÓN</button>
+        <button id="admin" class="btn-login" (click)="toggle($event)">
+          INICIAR SESIÓN
+        </button>
       </mat-card-actions>
-    </mat-card></div>
-    
+    </mat-card>
   </div>
+</div>

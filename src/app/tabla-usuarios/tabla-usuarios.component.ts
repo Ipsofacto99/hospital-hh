@@ -1,19 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { Usuario_tabla } from '../models/objects';
+import { Usuario_medico, Usuario_tabla } from '../models/objects';
 import { API_Service } from '../services/api-service';
 
 @Component({
   selector: 'app-tabla-usuarios',
   templateUrl: './tabla-usuarios.component.html',
-  styleUrls: [
-    './tabla-usuarios.component.scss',
-    '../usuarios/usuarios.component.css',
-  ],
+  styleUrls: ['../../assets/css/app-styles.scss'],
 })
 export class TablaUsuariosComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -32,6 +29,7 @@ export class TablaUsuariosComponent {
   dataSource: MatTableDataSource<any>;
 
   data: Usuario_tabla[] = [];
+  usuario: Usuario_medico;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -83,6 +81,11 @@ export class TablaUsuariosComponent {
   }
 
   agregarNuevo() {
-    console.log('nuevo');
+    let med: Usuario_medico = {
+      nombre: 'Paco',
+      contrasenia: 'hola',
+    };
+    this.usuario = med;
+    console.log(this.usuario);
   }
 }

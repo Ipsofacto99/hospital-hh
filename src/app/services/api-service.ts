@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Usuario } from '../models/objects';
+import { Usuario, Usuario_login } from '../models/objects';
 
 export class API_Service {
   baseUrl = 'http://174.142.6.165:3000';
@@ -10,11 +10,11 @@ export class API_Service {
 
   constructor(private httpClient: HttpClient) {}
 
-  async start(user) {
+  async start(user: Usuario_login) {
     return await this.login(user);
   }
 
-  async login(user) {
+  async login(user: Usuario_login) {
     return await this.httpClient
       .post(`${this.baseUrl}/login`, user)
       .toPromise()

@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Usuario_medico } from '../models/objects';
 
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
-  styleUrls: ['../tabla-usuarios/tabla-usuarios.component.scss']
+  styleUrls: ['../../assets/css/app-styles.scss']
 })
 export class UsuariosComponent implements OnInit {
 
-  constructor() { }
+  @Input() user: Usuario_medico;
+
+  constructor() { 
+  }
 
   ngOnInit(): void {
+
   }
 
   guardar(){
     
   }
-
-  cancelar(){
-
-  }
-
 }

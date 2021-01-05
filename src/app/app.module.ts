@@ -11,14 +11,14 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { HomescreenComponent } from './homescreen/homescreen.component';
-import { TablaMedicosComponent } from './tabla-medicos/tabla-medicos.component';
+import { TablaMedicosComponent } from './tabla-recetas/tabla-recetas.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MedicosScreenComponent } from './medicos-screen/medicos-screen.component';
+import { RecetasScreenComponent } from './recetas-screen/recetas-screen.component';
 
 
 import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
@@ -38,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     HomescreenComponent,
     TablaMedicosComponent,
-    MedicosScreenComponent,
+    RecetasScreenComponent,
     TablaUsuariosComponent,
     UsuariosComponent,
     AdministradorScreenComponent,

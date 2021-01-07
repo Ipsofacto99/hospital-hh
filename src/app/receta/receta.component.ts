@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { parseCommandLine } from 'typescript';
 
 import { Medicamento, Medico, Paciente, Receta } from '../models/objects';
 
@@ -10,6 +12,8 @@ import { Medicamento, Medico, Paciente, Receta } from '../models/objects';
 })
 export class RecetaComponent implements OnInit {
   @Input() receta: Receta;
+  @Input() editable: boolean;
+  @Output() verReceta: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   displayedColumns = [
     'nombre',
@@ -24,76 +28,135 @@ export class RecetaComponent implements OnInit {
   ];
   dataSource: MatTableDataSource<any>;
 
-  constructor() {
-    if (this.receta == null) {
-      this.receta = new Receta();
-      let fecha = new Date();
-      this.receta.fecha = fecha.toLocaleString();
-      this.receta.folio = '00';
-      this.receta.medicamentos = [];
-      this.receta.indicaciones = '';
-      this.receta.diagnostico = '';
-    } else {
+  //Medicamentos
+
+  formG: FormGroup;
+  formM: FormGroup;
+
+  constructor() {}
+
+  ngOnInit() {
+    let receta = this.receta;
+    let medico = receta.medico;
+    let paciente = receta.paciente;
+
+    this.formG = new FormGroup({
+      p_id: new FormControl({ value: paciente.id }, [Validators.required]),
+      p_curp: new FormControl(
+        { value: paciente.curp, disabled: !this.editable }, //datos paciente
+        [Validators.required]
+      ),
+      p_nombre: new FormControl(
+        { value: paciente.nombre, disabled: !this.editable },
+        [Validators.required]
+      ),
+      p_domicilio: new FormControl(
+        { value: paciente.domicilio, disabled: !this.editable },
+        [Validators.required]
+      ),
+      p_edad: new FormControl(
+        { value: paciente.edad, disabled: !this.editable },
+        [Validators.required]
+      ),
+      p_sexo: new FormControl(
+        { value: paciente.sexo, disabled: !this.editable },
+        [Validators.required]
+      ),
+      m_id: new FormControl(
+        { value: medico.id, disabled: !this.editable }, //datos medico
+        [Validators.required]
+      ),
+      m_cedula: new FormControl(
+        { value: medico.cedula, disabled: !this.editable },
+        [Validators.required]
+      ),
+      m_nombre: new FormControl(
+        { value: medico.nombre, disabled: !this.editable },
+        [Validators.required]
+      ),
+      m_especialidad: new FormControl(
+        { value: medico.especialidad, disabled: !this.editable },
+        [Validators.required]
+      ),
+      m_direccion: new FormControl(
+        { value: medico.direccion, disabled: !this.editable },
+        [Validators.required]
+      ),
+      m_universidad: new FormControl(
+        { value: medico.universidad, disabled: !this.editable },
+        [Validators.required]
+      ),
+      m_turno: new FormControl(
+        { value: medico.turno, disabled: !this.editable },
+        [Validators.required]
+      ),
+      diagnostico: new FormControl(
+        { value: receta.diagnostico, disabled: !this.editable }, //datos receta
+        [Validators.required]
+      ),
+      indicaciones: new FormControl(
+        { value: receta.indicaciones, disabled: !this.editable },
+        [Validators.required]
+      ),
+      id: new FormControl(
+        { value: receta.indicaciones, disabled: !this.editable } //datos medicamentos
+      ),
+    });
+
+    this.formM = new FormGroup({
+      nombre: new FormControl({ value: '', disabled: !this.editable }),
+      clave: new FormControl({ value: '', disabled: !this.editable }),
+      presentacion: new FormControl({ value: '', disabled: !this.editable }),
+      empaque: new FormControl({ value: '', disabled: !this.editable }),
+      cantidad: new FormControl({ value: '', disabled: !this.editable }),
+      dosificacion: new FormControl({ value: '', disabled: !this.editable }),
+      dias: new FormControl({ value: '', disabled: !this.editable }),
+      viaAdministracion: new FormControl({
+        value: '',
+        disabled: !this.editable,
+      }),
+    });
+
+    if (receta.medicamentos.length > 0) {
+      let idx = 0;
+      receta.medicamentos.forEach((element) => {
+        element.index = idx;
+        idx++;
+      });
     }
+
+    this.updateTable();
   }
 
-  ngOnInit() {}
-
-  //Receta
-
-  //Paciente
-  @Input() p_curp: string;
-  @Input() p_nombre: string;
-  @Input() p_domicilio: string;
-  @Input() p_edad: number;
-  @Input() p_sexo: string;
-
-  //Medico
-  @Input() m_cedula: string;
-  @Input() m_nombre: string;
-  @Input() m_especialidad: string;
-  @Input() m_direccion: string;
-  @Input() m_universidad: string;
-  @Input() m_turno: string;
-
-  @Input() diagnostico: string;
-  @Input() indicaciones: string;
-
-  //Medicamentos
-  @Input() nombre: string;
-  @Input() clave: string;
-  @Input() presentacion: string;
-  @Input() empaque: string;
-  @Input() cantidad: number;
-  @Input() dosificacion: string;
-  @Input() dias: number;
-  @Input() viaAdministracion: string;
-
-  agregar() {
+  addDrug() {
     let med: Medicamento;
     let idx: number;
     let { medicamentos } = this.receta;
+    let controls = this.formM.controls;
 
     if (medicamentos.length < 1) idx = 0;
     else idx = medicamentos[medicamentos.length - 1].index + 1;
 
     med = {
       index: idx,
-      nombre: this.nombre,
-      clave: this.clave,
-      presentacion: this.presentacion,
-      empaque: this.empaque,
-      cantidad: this.cantidad,
-      dosificacion: this.dosificacion,
-      dias: this.dias,
-      viaAdministracion: this.viaAdministracion,
+      nombre: controls.nombre.value,
+      clave: controls.clave.value,
+      presentacion: controls.presentacion.value,
+      empaque: controls.empaque.value,
+      cantidad: controls.cantidad.value,
+      dosificacion: controls.dosificacion.value,
+      dias: controls.dias.value,
+      viaAdministracion: controls.viaAdministracion.value,
     };
 
     medicamentos.push(med);
-    this.actualizarTablaMed();
+
+    this.formM.reset();
+
+    this.updateTable();
   }
 
-  quitar(index: number) {
+  deleteDrug(index: number) {
     let idx: any;
     let { medicamentos } = this.receta;
 
@@ -104,16 +167,44 @@ export class RecetaComponent implements OnInit {
     }
 
     medicamentos.splice(idx, 1);
-    this.actualizarTablaMed();
+    this.updateTable();
   }
 
-  actualizarTablaMed() {
+  updateTable() {
     this.dataSource = new MatTableDataSource(this.receta.medicamentos);
   }
 
-  guardar() {
-    console.log(this.receta);
+  onSave() {
+    let controls = this.formG.controls;
+
+    let paciente: Paciente = {
+      id: controls.p_id.value,
+      curp: controls.p_curp.value,
+      nombre: controls.p_nombre.value,
+      domicilio: controls.p_domicilio.value,
+      edad: controls.p_edad.value,
+      sexo: controls.p_sexo.value,
+    };
+
+    let medico: Medico = {
+      id: controls.m_id.value,
+      nombre: controls.m_nombre.value,
+      especialidad: controls.m_especialidad.value,
+      turno: controls.m_turno.value,
+      universidad: controls.m_universidad.value,
+      direccion: controls.m_direccion.value,
+      cedula: controls.m_cedula.value,
+    };
+
+    this.receta.paciente = paciente;
+    this.receta.medico = medico;
+
+    this.onCancel();
   }
 
   pdf() {}
+
+  onCancel() {
+    this.verReceta.emit(false);
+  }
 }

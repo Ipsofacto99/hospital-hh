@@ -27,8 +27,14 @@ export class API_Service {
       });
   }
 
-  obtenerUsuarios(): Observable<Usuario[]> {
+  getUsers(): Observable<Usuario[]> {
     return this.httpClient.get<Usuario[]>(`${this.baseUrl}/api/users`, {
+      headers: this.headers,
+    });
+  }
+
+  getUserById(id: number): Observable<Usuario> {
+    return this.httpClient.get<Usuario>(`${this.baseUrl}/api/users/${id}`, {
       headers: this.headers,
     });
   }

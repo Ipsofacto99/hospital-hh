@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ViewChild } from '@angular/core';
+import { Component, Output, ViewChild, EventEmitter } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { Usuario_medico, Usuario_tabla } from '../models/objects';
+import { Usuario_tabla } from '../models/objects';
 import { API_Service } from '../services/api-service';
 
 @Component({
-  selector: 'app-tabla-usuarios',
+  selector: 'tabla-usuarios',
   templateUrl: './tabla-usuarios.component.html',
   styleUrls: ['../../assets/css/app-styles.scss'],
 })
@@ -16,41 +16,28 @@ export class TablaUsuariosComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns = [
-    'usuario',
-    'nombre',
-    'administrador',
-    'medico',
-    'medico_acesso_recetas',
-    'responsable_sanitario',
-    'mostrador_farmacia',
-    'acciones',
-  ];
+  displayedColumns = ['usuario', 'nombre', 'cargo', 'acciones'];
   dataSource: MatTableDataSource<any>;
 
   data: Usuario_tabla[] = [];
-  usuario: Usuario_medico;
+  apiService: API_Service;
+
+  @Output() idUsuario: EventEmitter<number> = new EventEmitter<number>(); 
+  @Output() isObservable: EventEmitter<boolean> = new EventEmitter<boolean>(); 
 
   constructor(private httpClient: HttpClient) {}
-
-  apiService: API_Service;
 
   async ngOnInit() {
     this.dataSource = new MatTableDataSource();
     this.apiService = new API_Service(this.httpClient);
     await this.apiService.start({ username: 'carrot', password: '1234' });
-    this.apiService.obtenerUsuarios().subscribe((resp) => {
+    this.apiService.getUsers().subscribe((resp) => {
       resp.map((item) => {
-        console.log(item);
         this.data.push({
           nombre: item.first_name + ' ' + item.last_name,
           id: item.id,
           usuario: item.username,
-          administrador: '',
-          medico: '',
-          medico_acesso_recetas: '',
-          mostrador_farmacia: '',
-          responsable_sanitario: '',
+          cargo: '',
         });
       });
       this.dataSource = new MatTableDataSource(this.data);
@@ -72,20 +59,17 @@ export class TablaUsuariosComponent {
     }
   }
 
-  editar(id) {
+  onEdit(id: number) {
+    this.idUsuario.emit(id);
+    this.isObservable.emit(true);
+  }
+
+  onDelete(id: number) {
     console.log(id);
   }
 
-  eliminar(id) {
-    console.log(id);
-  }
-
-  agregarNuevo() {
-    let med: Usuario_medico = {
-      nombre: 'Paco',
-      contrasenia: 'hola',
-    };
-    this.usuario = med;
-    console.log(this.usuario);
+  addNew() {
+    this.idUsuario.emit(null);
+    this.isObservable.emit(true);
   }
 }

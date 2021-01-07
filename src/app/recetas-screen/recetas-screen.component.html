@@ -1,3 +1,14 @@
 <header></header>
-<tabla-recetas></tabla-recetas>
+<tabla-recetas
+  (verReceta)="isObservable($event)"
+  (editarReceta)="isEditable($event)"
+  (recetaOut)="newReceta($event)"
+  *ngIf="!observar"
+></tabla-recetas>
+<app-receta
+  (verReceta)="isObservable($event)"
+  [(receta)]="receta"
+  [(editable)]="editable"
+  *ngIf="observar"
+></app-receta>
 <app-footer></app-footer>

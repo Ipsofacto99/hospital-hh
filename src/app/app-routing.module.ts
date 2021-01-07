@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomescreenComponent } from './homescreen/homescreen.component';
-import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
 import { RecetasScreenComponent } from './recetas-screen/recetas-screen.component';
-import { AdministradorScreenComponent } from './administrador-screen/administrador-screen.component';
-import { RecetaComponent } from './receta/receta.component';
+import { UsuariosScreenComponent } from './usuarios-screen/usuarios-screen.component';
 
 const routes: Routes = [
   {
@@ -13,32 +10,17 @@ const routes: Routes = [
     redirectTo: 'inicio',
     pathMatch: 'full',
   },
-
   {
     path: 'inicio',
     component: HomescreenComponent,
   },
   {
-    path: 'tabla-recetas',
+    path: 'recetas',
     component: RecetasScreenComponent,
   },
   {
-    path: 'receta',
-    component: RecetaComponent,
-  },
-  {
-    path: 'administrador',
-    component: AdministradorScreenComponent,
-    children: [
-      {
-        path: 'tabla-usuarios',
-        component: TablaUsuariosComponent,
-      },
-      {
-        path: 'usuario',
-        component: UsuariosComponent,
-      },
-    ],
+    path: 'usuarios',
+    component: UsuariosScreenComponent,
   },
 ];
 

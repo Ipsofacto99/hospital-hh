@@ -1,29 +1,89 @@
 <div class="page-container p-4">
-  <div class="row">
-    <div class="item-container col p-4 ml-3 mr-2 mb-2">
-      <p class="blue-text">Agregar/Modificar usuario</p>
+  <form novalidate [formGroup]="formG" autocomplete="off">
+    <div class="row">
+      <div class="item-container col p-4 ml-3 mr-2 mb-2">
+        <p class="blue-text">Agregar/Modificar usuario</p>
 
-      <mat-form-field class="col-12">
-        <mat-label>Nombre</mat-label>
-        <input matInput placeholder="" [(ngModel)]="nombre" />
-      </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>Nombre</mat-label>
+          <input
+            (change)="updateName(formG.controls.m_nombre.value)"
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_nombre"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_nombre.invalid && formG.controls.m_nombre.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
 
-      <mat-form-field class="col-md-6 col-sm-12">
-        <mat-label>Usuario</mat-label>
-        <input matInput placeholder="" [(ngModel)]="usuario" />
-      </mat-form-field>
+        <mat-form-field class="col-md-6 col-sm-12">
+          <mat-label>Usuario</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.usuario"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.usuario.touched && formG.controls.usuario.invalid
+            "
+          >
+            <div *ngIf="formG.controls.usuario.errors.required">
+              Campo obligatorio **
+            </div>
+            <div *ngIf="formG.controls.usuario.errors.minlength">
+              Debe contener al menos ({{
+                formG.controls.usuario.errors.minlength.requiredLength
+              }}) caracteres
+            </div>
+          </mat-hint>
+        </mat-form-field>
 
-      <mat-form-field class="col-md-6 col-sm-12">
-        <mat-label>Contraseña</mat-label>
-        <input matInput placeholder="" [(ngModel)]="pwd" type="password" />
-      </mat-form-field>
+        <mat-form-field class="col-md-6 col-sm-12">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.pwd"
+            required
+            [type]="type"
+          />
+          <div mat-button matSuffix (click)="showPwd()">
+            <i  class="icon-t fa fa-eye" *ngIf="visibility"></i>
+            <i  class="icon-t fa fa-eye-slash" *ngIf="!visibility"></i>
+          </div>
+          <mat-hint
+            class="text-danger"
+            *ngIf="formG.controls.pwd.invalid && formG.controls.pwd.touched"
+          >
+            <div *ngIf="formG.controls.pwd.errors.required">
+              Campo obligatorio **
+            </div>
+            <div *ngIf="formG.controls.pwd.errors.minlength">
+              Debe contener al menos ({{
+                formG.controls.pwd.errors.minlength.requiredLength
+              }}) caracteres
+            </div>
+          </mat-hint>
+        </mat-form-field>
 
-      <div class="row l-text">
-        <div class="col ml-2">
+        <div class="col ml-2 l-text p-3">
           <mat-checkbox
             *ngFor="let item of checkbox.data"
             [checked]="item.activo == true"
-            class="d-block p-2"
+            class="d-block"
             (click)="checkItem(item.id)"
           >
             <p class="d-inline text-wrap">
@@ -32,54 +92,149 @@
           </mat-checkbox>
         </div>
       </div>
+
+      <div class="item-container col p-4 mr-3 mb-2 ml-xs-3 ml-sm-0">
+        <p class="blue-text">Datos del médico</p>
+
+        <mat-form-field class="col-12">
+          <mat-label>Nombre</mat-label>
+          <input
+            (change)="updateName(formG.controls.m_nombre.value)"
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_nombre"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_nombre.invalid && formG.controls.m_nombre.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="col-12">
+          <mat-label>Especialidad</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_especialidad"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_especialidad.invalid &&
+              formG.controls.m_especialidad.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="col-12">
+          <mat-label>Cedula</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_cedula"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_cedula.invalid && formG.controls.m_cedula.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6 col-sm-12">
+          <mat-label>Universidad</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_universidad"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_universidad.invalid &&
+              formG.controls.m_universidad.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6 col-sm-12">
+          <mat-label>Turno</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_turno"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_turno.invalid && formG.controls.m_turno.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="col-12">
+          <mat-label>Dirección</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_direccion"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_direccion.invalid &&
+              formG.controls.m_direccion.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+      </div>
     </div>
 
-    <div class="item-container col p-4 mr-3 mb-2 ml-xs-3 ml-sm-0">
-      <p class="blue-text">Datos del médico</p>
-
-      <mat-form-field class="col-12">
-        <mat-label>Nombre</mat-label>
-        <input matInput placeholder="" [(ngModel)]="nombre" />
-      </mat-form-field>
-
-      <mat-form-field class="col-12">
-        <mat-label>Especialidad</mat-label>
-        <input matInput placeholder="" [(ngModel)]="especialidad" />
-      </mat-form-field>
-
-      <mat-form-field class="col-md-6 col-sm-12">
-        <mat-label>Cedula</mat-label>
-        <input matInput placeholder="" [(ngModel)]="cedula" />
-      </mat-form-field>
-
-      <mat-form-field class="col-md-6 col-sm-12">
-        <mat-label>Universidad</mat-label>
-        <input matInput placeholder="" [(ngModel)]="universidad" />
-      </mat-form-field>
-
-      <mat-form-field class="col-12">
-        <mat-label>Dirección</mat-label>
-        <input matInput placeholder="" [(ngModel)]="direccion" />
-      </mat-form-field>
+    <div class="item-container">
+      <div class="d-flex flex-row-reverse pl-4 pr-4">
+        <button
+        type="submit"
+          mat-button
+          mat-flat-button
+          class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue"
+          (click)="onSave()"
+        >
+          Guardar
+        </button>
+        <button
+          mat-flat-button
+          class="prl-1 mt-4 mb-3 col-lg-auto bg-blue"
+          (click)="onCancel()"
+        >
+          Cancelar
+        </button>
+      </div>
     </div>
-  </div>
-
-  <div class="item-container">
-    <div class="d-flex flex-row-reverse pl-4 pr-4">
-      <button
-        mat-flat-button
-        class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue"
-        (click)="onSave()"
-      >
-        Guardar
-      </button>
-      <button
-        mat-flat-button
-        class="prl-1 mt-4 mb-3 col-lg-auto bg-blue"
-        (click)="onCancel()"
-      >
-        Cancelar
-      </button>
-    </div>
-  </div>
+  </form>
 </div>

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { parseCommandLine } from 'typescript';
 
 import { Medicamento, Medico, Paciente, Receta } from '../models/objects';
 
@@ -44,7 +43,7 @@ export class RecetaComponent implements OnInit {
       p_id: new FormControl({ value: paciente.id }, [Validators.required]),
       p_curp: new FormControl(
         { value: paciente.curp, disabled: !this.editable }, //datos paciente
-        [Validators.required]
+        [Validators.required, Validators.minLength(18)]
       ),
       p_nombre: new FormControl(
         { value: paciente.nombre, disabled: !this.editable },
@@ -175,6 +174,7 @@ export class RecetaComponent implements OnInit {
   }
 
   onSave() {
+    if (this.formG.invalid) return;
     let controls = this.formG.controls;
 
     let paciente: Paciente = {

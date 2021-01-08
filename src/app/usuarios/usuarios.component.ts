@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
 import { API_Service } from '../services/api-service';
 
 @Component({
@@ -31,42 +32,70 @@ export class UsuariosComponent implements OnInit {
     ],
   };
 
-  constructor(private httpClient: HttpClient) {}
+  formG: FormGroup;
+
+  constructor(private httpClient: HttpClient) {
+    this.formG = new FormGroup({
+      usuario: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      pwd: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      m_id: new FormControl('', [Validators.required]),
+      m_cedula: new FormControl('', [Validators.required]),
+      m_nombre: new FormControl('', [Validators.required]),
+      m_especialidad: new FormControl('', [Validators.required]),
+      m_direccion: new FormControl('', [Validators.required]),
+      m_universidad: new FormControl('', [Validators.required]),
+      m_turno: new FormControl('', [Validators.required]),
+    });
+  }
 
   async ngOnInit() {
     this.apiService = new API_Service(this.httpClient);
     await this.apiService.start({ username: 'carrot', password: '1234' });
     if (this.idUser != null) {
       this.apiService.getUserById(this.idUser).subscribe((resp) => {
-        //console.log(resp);
-        this.usuario = resp.username;
-        this.nombre = resp.first_name + ' ' + resp.last_name;
-        this.pwd = '';
-        this.universidad = '';
-        this.cedula = '';
-        this.especialidad = '';
-        this.direccion = '';
+        console.log(resp);
+        let nombre = resp.first_name + ' ' + resp.last_name;
+        this.formG.setValue({
+          usuario: resp.username,
+          pwd: resp.hash,
+          m_id: resp.id,
+          m_cedula: '',
+          m_nombre: nombre,
+          m_especialidad: '',
+          m_direccion: '',
+          m_universidad: '',
+          m_turno: '',
+        });
       });
     }
   }
 
+  updateName(name: string){
+    this.formG.controls['m_nombre'].setValue(name);
+  }
+
   checkItem(item: number) {
-    this.checkbox.data.forEach((element) => {
-      if (element.id == item) {
-        element.activo = true;
-        console.log(element.activo);
-      } else {
-        element.activo = false;
-        console.log(element.activo);
-      }
-    });
+    this.checkbox.data.forEach((element) => {});
   }
 
   onSave() {
+    if (this.formG.invalid) return;
     this.isObservable.emit(false);
   }
 
   onCancel() {
     this.isObservable.emit(false);
+  }
+
+  visibility: boolean = false;
+  type: string = 'password';
+  showPwd(){
+    this.visibility = !this.visibility;
+    if (this.visibility){
+      this.type = 'text';
+    }
+    else {
+      this.type = 'password';
+    }
   }
 }

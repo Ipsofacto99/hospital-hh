@@ -20,8 +20,8 @@
         <mat-form-field class="col-12">
           <mat-label>CURP</mat-label>
           <input
-            autocomplete="off"
             matInput
+            autocomplete="off"
             placeholder=""
             [formControl]="formG.controls.p_curp"
             required
@@ -32,15 +32,22 @@
               formG.controls.p_curp.invalid && formG.controls.p_curp.touched
             "
           >
-            Campo obligatorio **
+            <div *ngIf="formG.controls.p_curp.errors.required">
+              Campo obligatorio **
+            </div>
+            <div *ngIf="formG.controls.p_curp.errors.minlength">
+              Debe contener al menos ({{
+                formG.controls.p_curp.errors.minlength.requiredLength
+              }}) caracteres
+            </div>
           </mat-hint>
         </mat-form-field>
 
         <mat-form-field class="col-12">
           <mat-label>Nombre</mat-label>
           <input
-            autocomplete="off"
             matInput
+            autocomplete="off"
             placeholder=""
             [formControl]="formG.controls.p_nombre"
             required
@@ -59,6 +66,7 @@
           <mat-label>Domicilio</mat-label>
           <input
             matInput
+            autocomplete="off"
             placeholder=""
             [formControl]="formG.controls.p_domicilio"
             required
@@ -78,6 +86,7 @@
           <mat-label>Edad</mat-label>
           <input
             matInput
+            autocomplete="off"
             placeholder=""
             [formControl]="formG.controls.p_edad"
             type="number"
@@ -97,6 +106,7 @@
           <mat-label>Sexo</mat-label>
           <input
             matInput
+            autocomplete="off"
             placeholder=""
             [formControl]="formG.controls.p_sexo"
             required
@@ -119,6 +129,7 @@
           <mat-label>Nombre</mat-label>
           <input
             matInput
+            autocomplete="off"
             placeholder=""
             [formControl]="formG.controls.m_nombre"
             required
@@ -137,6 +148,7 @@
           <mat-label>Especialidad</mat-label>
           <input
             matInput
+            autocomplete="off"
             placeholder=""
             [formControl]="formG.controls.m_especialidad"
             required
@@ -156,6 +168,7 @@
           <mat-label>Cedula</mat-label>
           <input
             matInput
+            autocomplete="off"
             placeholder=""
             [formControl]="formG.controls.m_cedula"
             required
@@ -174,6 +187,7 @@
           <mat-label>Universidad</mat-label>
           <input
             matInput
+            autocomplete="off"
             placeholder=""
             [formControl]="formG.controls.m_universidad"
             required
@@ -193,6 +207,7 @@
           <mat-label>Turno</mat-label>
           <input
             matInput
+            autocomplete="off"
             placeholder=""
             [formControl]="formG.controls.m_turno"
             required
@@ -211,6 +226,7 @@
           <mat-label>Dirección</mat-label>
           <input
             matInput
+            autocomplete="off"
             placeholder=""
             [formControl]="formG.controls.m_direccion"
             required
@@ -233,6 +249,7 @@
       <mat-form-field class="col">
         <input
           matInput
+          autocomplete="off"
           placeholder=""
           [formControl]="formG.controls.diagnostico"
           required
@@ -260,6 +277,7 @@
               <input
                 id="nombre"
                 matInput
+                autocomplete="off"
                 placeholder=""
                 [formControl]="formM.controls.nombre"
               />
@@ -269,6 +287,7 @@
               <mat-label>Clave</mat-label>
               <input
                 matInput
+                autocomplete="off"
                 placeholder=""
                 [formControl]="formM.controls.clave"
               />
@@ -278,6 +297,7 @@
               <mat-label>Presentacion</mat-label>
               <input
                 matInput
+                autocomplete="off"
                 placeholder=""
                 [formControl]="formM.controls.presentacion"
               />
@@ -287,6 +307,7 @@
               <mat-label>Empaque</mat-label>
               <input
                 matInput
+                autocomplete="off"
                 placeholder=""
                 [formControl]="formM.controls.empaque"
               />
@@ -298,6 +319,7 @@
               <mat-label>Cantidad</mat-label>
               <input
                 matInput
+                autocomplete="off"
                 placeholder=""
                 [formControl]="formM.controls.cantidad"
               />
@@ -307,6 +329,7 @@
               <mat-label>Dosificacion</mat-label>
               <input
                 matInput
+                autocomplete="off"
                 placeholder=""
                 [formControl]="formM.controls.dosificacion"
               />
@@ -316,6 +339,7 @@
               <mat-label>Dias de Administración</mat-label>
               <input
                 matInput
+                autocomplete="off"
                 placeholder=""
                 [formControl]="formM.controls.dias"
               />
@@ -325,6 +349,7 @@
               <mat-label> Vía de Administación</mat-label>
               <input
                 matInput
+                autocomplete="off"
                 placeholder=""
                 [formControl]="formM.controls.viaAdministracion"
               />
@@ -415,6 +440,7 @@
       <mat-form-field class="col">
         <input
           matInput
+          autocomplete="off"
           placeholder=""
           [formControl]="formG.controls.indicaciones"
           required
@@ -437,14 +463,15 @@
           mat-flat-button
           class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue"
           (click)="pdf()"
-          [disabled]="editable || formG.invalid"
+          [disabled]="editable"
         >
           PDF
         </button>
         <button
+          type="submit"
           mat-flat-button
           class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue"
-          [disabled]="!editable || formG.invalid"
+          [disabled]="!editable"
           (click)="onSave()"
         >
           Guardar

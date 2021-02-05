@@ -33,6 +33,7 @@ export class TablaUsuariosComponent {
     await this.apiService.start({ username: 'carrot', password: '1234' });
     this.apiService.getUsers().subscribe((resp) => {
       resp.map((item) => {
+        console.log(item);
         this.data.push({
           nombre: item.first_name + ' ' + item.last_name,
           id: item.id,

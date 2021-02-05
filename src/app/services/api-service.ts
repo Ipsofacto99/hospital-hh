@@ -28,7 +28,7 @@ export class API_Service {
   }
 
   getUsers(): Observable<Usuario[]> {
-    return this.httpClient.get<Usuario[]>(`${this.baseUrl}/api/users`, {
+    return this.httpClient.get<Usuario[]>(`${this.baseUrl}/api/drugs`, {
       headers: this.headers,
     });
   }

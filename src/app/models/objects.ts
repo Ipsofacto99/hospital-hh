@@ -25,8 +25,10 @@ export interface Usuario {
 }
 
 export interface Usuario_medico {
-  nombre: string;
+  usuario: string;
   contrasenia: string;
+  cargo: string[];
+  medico: Medico;
 }
 
 //Recetas

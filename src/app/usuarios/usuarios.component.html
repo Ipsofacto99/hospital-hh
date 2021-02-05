@@ -1,13 +1,12 @@
 <div class="page-container p-4">
   <form novalidate [formGroup]="formG" autocomplete="off">
     <div class="row">
-      <div class="item-container col p-4 ml-3 mr-2 mb-2">
+      <div class="item-container col p-4 ml-3 mr-3 mb-2">
         <p class="blue-text">Agregar/Modificar usuario</p>
 
         <mat-form-field class="col-12">
           <mat-label>Nombre</mat-label>
           <input
-            (change)="updateName(formG.controls.m_nombre.value)"
             matInput
             autocomplete="off"
             placeholder=""
@@ -61,8 +60,8 @@
             [type]="type"
           />
           <div mat-button matSuffix (click)="showPwd()">
-            <i  class="icon-t fa fa-eye" *ngIf="visibility"></i>
-            <i  class="icon-t fa fa-eye-slash" *ngIf="!visibility"></i>
+            <i class="icon-t fa fa-eye p-2" *ngIf="visibility"></i>
+            <i class="icon-t fa fa-eye-slash p-2" *ngIf="!visibility"></i>
           </div>
           <mat-hint
             class="text-danger"
@@ -79,42 +78,21 @@
           </mat-hint>
         </mat-form-field>
 
-        <div class="col ml-2 l-text p-3">
-          <mat-checkbox
-            *ngFor="let item of checkbox.data"
-            [checked]="item.activo == true"
-            class="d-block"
-            (click)="checkItem(item.id)"
-          >
-            <p class="d-inline text-wrap">
-              {{ item.nombre }}
-            </p>
-          </mat-checkbox>
+        <div class="col ml-2 l-text pb-2 pt-2">
+          <label *ngFor="let item of checkbox.data" class="text-wrap m-2 ml-2 mr-4 p-0 icon-t col-sm-12 col-md-auto">
+            <input
+              [checked]="item.activo == true"
+              (click)="checkItem(item.id)"
+              [id]="pref+item.id"
+              type="checkbox"
+            />
+            {{ item.nombre }}
+          </label>
         </div>
       </div>
 
-      <div class="item-container col p-4 mr-3 mb-2 ml-xs-3 ml-sm-0">
+      <div *ngIf="medActive" class="item-container col p-4 mr-3 mb-2 ml-3 ml-sm-0">
         <p class="blue-text">Datos del médico</p>
-
-        <mat-form-field class="col-12">
-          <mat-label>Nombre</mat-label>
-          <input
-            (change)="updateName(formG.controls.m_nombre.value)"
-            matInput
-            autocomplete="off"
-            placeholder=""
-            [formControl]="formG.controls.m_nombre"
-            required
-          />
-          <mat-hint
-            class="text-danger"
-            *ngIf="
-              formG.controls.m_nombre.invalid && formG.controls.m_nombre.touched
-            "
-          >
-            Campo obligatorio **
-          </mat-hint>
-        </mat-form-field>
 
         <mat-form-field class="col-12">
           <mat-label>Especialidad</mat-label>
@@ -219,7 +197,7 @@
     <div class="item-container">
       <div class="d-flex flex-row-reverse pl-4 pr-4">
         <button
-        type="submit"
+          type="submit"
           mat-button
           mat-flat-button
           class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue"

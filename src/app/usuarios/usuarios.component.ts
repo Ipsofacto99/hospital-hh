@@ -1,6 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  MinLengthValidator,
+  Validators,
+} from '@angular/forms';
 import { API_Service } from '../services/api-service';
 
 @Component({
@@ -26,7 +31,7 @@ export class UsuariosComponent implements OnInit {
     data: [
       { id: 0, nombre: 'Administrador', activo: false },
       { id: 1, nombre: 'Médico', activo: false },
-      { id: 2, nombre: 'Medico con acesso a todas las recetas', activo: false },
+      { id: 2, nombre: 'Médico con acesso a todas las recetas', activo: false },
       { id: 3, nombre: 'Mostrador de farmacia', activo: false },
       { id: 4, nombre: 'Responsable sanitario', activo: false },
     ],
@@ -36,7 +41,10 @@ export class UsuariosComponent implements OnInit {
 
   constructor(private httpClient: HttpClient) {
     this.formG = new FormGroup({
-      usuario: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      usuario: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
       pwd: new FormControl('', [Validators.required, Validators.minLength(6)]),
       m_id: new FormControl('', [Validators.required]),
       m_cedula: new FormControl('', [Validators.required]),
@@ -53,7 +61,6 @@ export class UsuariosComponent implements OnInit {
     await this.apiService.start({ username: 'carrot', password: '1234' });
     if (this.idUser != null) {
       this.apiService.getUserById(this.idUser).subscribe((resp) => {
-        console.log(resp);
         let nombre = resp.first_name + ' ' + resp.last_name;
         this.formG.setValue({
           usuario: resp.username,
@@ -70,12 +77,20 @@ export class UsuariosComponent implements OnInit {
     }
   }
 
-  updateName(name: string){
-    this.formG.controls['m_nombre'].setValue(name);
-  }
+  medActive = false;
+  pref = "checkbox";
+  checkItem(id: number) {
+    let item = <HTMLInputElement>document.getElementById('checkbox' + id);
+    if (item == null) return;
+    if (item.checked) this.checkbox.data[id].activo = true;
+    else this.checkbox.data[id].activo = false;
 
-  checkItem(item: number) {
-    this.checkbox.data.forEach((element) => {});
+    this.medActive = false;
+    this.checkbox.data.map((element) => {
+      if (element.activo && element.nombre.includes('Médico')) {
+        this.medActive = true;
+      }
+    });
   }
 
   onSave() {
@@ -89,12 +104,11 @@ export class UsuariosComponent implements OnInit {
 
   visibility: boolean = false;
   type: string = 'password';
-  showPwd(){
+  showPwd() {
     this.visibility = !this.visibility;
-    if (this.visibility){
+    if (this.visibility) {
       this.type = 'text';
-    }
-    else {
+    } else {
       this.type = 'password';
     }
   }

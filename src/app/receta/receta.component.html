@@ -1,4 +1,4 @@
-<div class="page-container p-4">
+<div class="page-container p-4" *ngIf="receta != null">
   <div class="item-container">
     <div class="col-12 d-flex flex-row-reverse pt-2">
       <p class="p-1 m-0">{{ receta.folio }}</p>
@@ -10,228 +10,481 @@
     </div>
   </div>
 
-  <div class="row mt-2 mb-2">
-    <div class="item-container col p-4 ml-3 mr-2">
-      <p class="blue-text">Datos del paciente</p>
+  <form novalidate [formGroup]="formG" autocomplete="off">
+    <div class="row mt-2 mb-2">
+      <div class="item-container col p-4 ml-3 mr-2">
+        <p class="blue-text">Datos del paciente</p>
 
-      <mat-form-field class="col-12">
-        <mat-label>CURP</mat-label>
-        <input matInput placeholder="" [(ngModel)]="p_curp" />
-      </mat-form-field>
+        <input [formControl]="formG.controls.p_id" required hidden />
 
-      <mat-form-field class="col-12">
-        <mat-label>Nombre</mat-label>
-        <input matInput placeholder="" [(ngModel)]="p_nombre" />
-      </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>CURP</mat-label>
+          <input
+            maxlength="18"
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.p_curp"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.p_curp.invalid && formG.controls.p_curp.touched
+            "
+          >
+            <div *ngIf="formG.controls.p_curp.errors.required">
+              Campo obligatorio **
+            </div>
+            <div *ngIf="formG.controls.p_curp.errors.minlength">
+              Debe contener al menos ({{
+                formG.controls.p_curp.errors.minlength.requiredLength
+              }}) caracteres
+            </div>
+          </mat-hint>
+        </mat-form-field>
 
-      <mat-form-field class="col-12">
-        <mat-label>Domicilio</mat-label>
-        <input matInput placeholder="" [(ngModel)]="p_domicilio" />
-      </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>Nombre</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.p_nombre"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.p_nombre.invalid && formG.controls.p_nombre.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
 
-      <mat-form-field class="col-md-6 col-sm-12">
-        <mat-label>Edad</mat-label>
-        <input matInput placeholder="" [(ngModel)]="p_edad" type="number" />
-      </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>Domicilio</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.p_domicilio"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.p_domicilio.invalid &&
+              formG.controls.p_domicilio.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
 
-      <mat-form-field class="col-md-6 col-sm-12">
-        <mat-label>Sexo</mat-label>
-        <input matInput placeholder="" [(ngModel)]="p_sexo" />
+        <mat-form-field class="col-md-6 col-sm-12">
+          <mat-label>Edad</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.p_edad"
+            type="number"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.p_edad.invalid && formG.controls.p_edad.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6 col-sm-12">
+          <mat-label>Sexo</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.p_sexo"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.p_sexo.invalid && formG.controls.p_sexo.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="item-container col p-4 mr-3">
+        <p class="blue-text">Datos del médico</p>
+
+        <mat-form-field class="col-12">
+          <mat-label>Nombre</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_nombre"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_nombre.invalid && formG.controls.m_nombre.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="col-12">
+          <mat-label>Especialidad</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_especialidad"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_especialidad.invalid &&
+              formG.controls.m_especialidad.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="col-12">
+          <mat-label>Cedula</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_cedula"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_cedula.invalid && formG.controls.m_cedula.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6 col-sm-12">
+          <mat-label>Universidad</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_universidad"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_universidad.invalid &&
+              formG.controls.m_universidad.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6 col-sm-12">
+          <mat-label>Turno</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_turno"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_turno.invalid && formG.controls.m_turno.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="col-12">
+          <mat-label>Dirección</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            placeholder=""
+            [formControl]="formG.controls.m_direccion"
+            required
+          />
+          <mat-hint
+            class="text-danger"
+            *ngIf="
+              formG.controls.m_direccion.invalid &&
+              formG.controls.m_direccion.touched
+            "
+          >
+            Campo obligatorio **
+          </mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="item-container p-4">
+      <p class="blue-text">Diagnóstico</p>
+      <mat-form-field class="col">
+        <input
+          matInput
+          autocomplete="off"
+          placeholder=""
+          [formControl]="formG.controls.diagnostico"
+          required
+        />
+        <mat-hint
+          class="text-danger"
+          *ngIf="
+            formG.controls.diagnostico.invalid &&
+            formG.controls.diagnostico.touched
+          "
+        >
+          Campo obligatorio **
+        </mat-hint>
       </mat-form-field>
     </div>
 
-    <div class="item-container col p-4 mr-3">
-      <p class="blue-text">Datos del médico</p>
+    <div class="item-container p-4 mt-2">
+      <p class="blue-text">Medicamentos</p>
 
-      <mat-form-field class="col-12">
-        <mat-label>Nombre</mat-label>
-        <input matInput placeholder="" [(ngModel)]="m_nombre" />
-      </mat-form-field>
+      <div class="row col-12 p-0 m-0">
+        <div class="col-md-10 col-sm-12 p-0 m-0">
+          <div class="row col-12 p-0 m-0">
+            <mat-form-field class="col">
+              <mat-label>Nombre</mat-label>
+              <input
+                id="nombre"
+                matInput
+                autocomplete="off"
+                placeholder=""
+                [formControl]="formM.controls.nombre"
+              />
+            </mat-form-field>
 
-      <mat-form-field class="col-12">
-        <mat-label>Especialidad</mat-label>
-        <input matInput placeholder="" [(ngModel)]="m_especialidad" />
-      </mat-form-field>
+            <mat-form-field class="col">
+              <mat-label>Clave</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                placeholder=""
+                [formControl]="formM.controls.clave"
+              />
+            </mat-form-field>
 
-      <mat-form-field class="col-12">
-        <mat-label>Cedula</mat-label>
-        <input matInput placeholder="" [(ngModel)]="m_cedula" />
-      </mat-form-field>
+            <mat-form-field class="col">
+              <mat-label>Presentacion</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                placeholder=""
+                [formControl]="formM.controls.presentacion"
+              />
+            </mat-form-field>
 
-      <mat-form-field class="col-md-6 col-sm-12">
-        <mat-label>Universidad</mat-label>
-        <input matInput placeholder="" [(ngModel)]="m_universidad" />
-      </mat-form-field>
+            <mat-form-field class="col">
+              <mat-label>Empaque</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                placeholder=""
+                [formControl]="formM.controls.empaque"
+              />
+            </mat-form-field>
+          </div>
 
-      <mat-form-field class="col-md-6 col-sm-12">
-        <mat-label>Turno</mat-label>
-        <input matInput placeholder="" [(ngModel)]="m_turno" />
-      </mat-form-field>
+          <div class="row col-12 p-0 m-0">
+            <mat-form-field class="col">
+              <mat-label>Cantidad</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                placeholder=""
+                [formControl]="formM.controls.cantidad"
+              />
+            </mat-form-field>
 
-      <mat-form-field class="col-12">
-        <mat-label>Dirección</mat-label>
-        <input matInput placeholder="" [(ngModel)]="m_direccion" />
-      </mat-form-field>
-    </div>
-  </div>
+            <mat-form-field class="col">
+              <mat-label>Dosificacion</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                placeholder=""
+                [formControl]="formM.controls.dosificacion"
+              />
+            </mat-form-field>
 
-  <div class="item-container p-4">
-    <p class="blue-text">Diagnóstico</p>
-    <mat-form-field class="col">
-      <input matInput placeholder="" [(ngModel)]="diagnostico" />
-    </mat-form-field>
-  </div>
+            <mat-form-field class="col">
+              <mat-label>Dias de Administración</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                placeholder=""
+                [formControl]="formM.controls.dias"
+              />
+            </mat-form-field>
 
-  <div class="item-container p-4 mt-2">
-    <p class="blue-text">Medicamentos</p>
-
-    <div class="row col-12 p-0 m-0">
-      <div class="col-md-10 col-sm-12 p-0 m-0">
-        <div class="row col-12 p-0 m-0">
-          <mat-form-field class="col">
-            <mat-label>Nombre</mat-label>
-            <input matInput placeholder="" [(ngModel)]="nombre" />
-          </mat-form-field>
-
-          <mat-form-field class="col">
-            <mat-label>Clave</mat-label>
-            <input matInput placeholder="" [(ngModel)]="clave" />
-          </mat-form-field>
-
-          <mat-form-field class="col">
-            <mat-label>Presentacion</mat-label>
-            <input matInput placeholder="" [(ngModel)]="presentacion" />
-          </mat-form-field>
-
-          <mat-form-field class="col">
-            <mat-label>Empaque</mat-label>
-            <input matInput placeholder="" [(ngModel)]="empaque" />
-          </mat-form-field>
+            <mat-form-field class="col">
+              <mat-label> Vía de Administación</mat-label>
+              <input
+                matInput
+                autocomplete="off"
+                placeholder=""
+                [formControl]="formM.controls.viaAdministracion"
+              />
+            </mat-form-field>
+          </div>
         </div>
 
-        <div class="row col-12 p-0 m-0">
-          <mat-form-field class="col">
-            <mat-label>Cantidad</mat-label>
-            <input matInput placeholder="" [(ngModel)]="cantidad" />
-          </mat-form-field>
-
-          <mat-form-field class="col">
-            <mat-label>Dosificacion</mat-label>
-            <input matInput placeholder="" [(ngModel)]="dosificacion" />
-          </mat-form-field>
-
-          <mat-form-field class="col">
-            <mat-label>Dias de Administración</mat-label>
-            <input matInput placeholder="" [(ngModel)]="dias" />
-          </mat-form-field>
-
-          <mat-form-field class="col">
-            <mat-label> Vía de Administación</mat-label>
-            <input matInput placeholder="" [(ngModel)]="viaAdministracion" />
-          </mat-form-field>
+        <div class="col">
+          <button
+            mat-flat-button
+            class="p-1 col bg-blue"
+            (click)="addDrug()"
+            [disabled]="!editable"
+          >
+            Agregar
+          </button>
         </div>
       </div>
 
-      <div class="col-2">
+      <table mat-table [dataSource]="dataSource" class="col-12 mt-4">
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let row">{{ row.nombre }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="clave">
+          <th mat-header-cell *matHeaderCellDef>Clave</th>
+          <td mat-cell *matCellDef="let row">{{ row.clave }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="presentacion">
+          <th mat-header-cell *matHeaderCellDef>Presentacion</th>
+          <td mat-cell *matCellDef="let row">{{ row.presentacion }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="empaque">
+          <th mat-header-cell *matHeaderCellDef>Empaque</th>
+          <td mat-cell *matCellDef="let row">{{ row.empaque }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cantidad">
+          <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+          <td mat-cell *matCellDef="let row">{{ row.cantidad }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="dosificacion">
+          <th mat-header-cell *matHeaderCellDef>Dosificacion</th>
+          <td mat-cell *matCellDef="let row">{{ row.dosificacion }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="dias">
+          <th mat-header-cell *matHeaderCellDef>No. días</th>
+          <td mat-cell *matCellDef="let row">{{ row.dias }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="viaAdministracion">
+          <th mat-header-cell *matHeaderCellDef>Vía de administración</th>
+          <td mat-cell *matCellDef="let row">{{ row.viaAdministracion }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let row">
+            <button
+              class="m-2 btn btn-link"
+              (click)="deleteDrug(row.index)"
+              [disabled]="!editable"
+            >
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <div
+        *ngIf="receta.medicamentos.length === 0"
+        class="col-12 text-center bg-gray p-3"
+      >
+        No hay medicamentos en la lista
+      </div>
+    </div>
+
+    <div class="item-container p-4 mt-2">
+      <p class="blue-text">Indicaciones</p>
+      <mat-form-field class="col">
+        <input
+          matInput
+          autocomplete="off"
+          placeholder=""
+          [formControl]="formG.controls.indicaciones"
+          required
+        />
+        <mat-hint
+          class="text-danger"
+          *ngIf="
+            formG.controls.indicaciones.invalid &&
+            formG.controls.indicaciones.touched
+          "
+        >
+          Campo obligatorio **
+        </mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="item-container mt-2">
+      <div class="d-flex flex-row-reverse pl-4 pr-4">
         <button
           mat-flat-button
-          class="p-3 m-4 col-lg-auto bg-blue"
-          (click)="agregar()"
+          class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue"
+          (click)="pdf()"
+          [disabled]="editable"
         >
-          Agregar
+          PDF
+        </button>
+        <button
+          type="submit"
+          mat-flat-button
+          class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue"
+          [disabled]="!editable"
+          (click)="onSave()"
+        >
+          Guardar
+        </button>
+        <button
+          mat-flat-button
+          class="prl-1 mt-4 mb-3 col-lg-auto bg-blue"
+          (click)="onCancel()"
+        >
+          Cancelar
         </button>
       </div>
     </div>
-
-    <table mat-table [dataSource]="dataSource" class="col-12 mt-4">
-      <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef>Nombre</th>
-        <td mat-cell *matCellDef="let row">{{ row.nombre }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="clave">
-        <th mat-header-cell *matHeaderCellDef>Clave</th>
-        <td mat-cell *matCellDef="let row">{{ row.clave }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="presentacion">
-        <th mat-header-cell *matHeaderCellDef>Presentacion</th>
-        <td mat-cell *matCellDef="let row">{{ row.presentacion }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="empaque">
-        <th mat-header-cell *matHeaderCellDef>Empaque</th>
-        <td mat-cell *matCellDef="let row">{{ row.empaque }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="cantidad">
-        <th mat-header-cell *matHeaderCellDef>Cantidad</th>
-        <td mat-cell *matCellDef="let row">{{ row.cantidad }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="dosificacion">
-        <th mat-header-cell *matHeaderCellDef>Dosificacion</th>
-        <td mat-cell *matCellDef="let row">{{ row.dosificacion }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="dias">
-        <th mat-header-cell *matHeaderCellDef>No. días</th>
-        <td mat-cell *matCellDef="let row">{{ row.dias }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="viaAdministracion">
-        <th mat-header-cell *matHeaderCellDef>Vía de administración</th>
-        <td mat-cell *matCellDef="let row">{{ row.viaAdministracion }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="acciones">
-        <th mat-header-cell *matHeaderCellDef>Acciones</th>
-        <td mat-cell *matCellDef="let row">
-          <button class="m-2 btn btn-link" (click)="quitar(row.index)">
-            <i class="fa fa-trash"></i>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-
-    <div *ngIf="receta.medicamentos.length === 0" class="col-12 text-center bg-gray p-3">
-      No hay medicamentos en la lista
-    </div>
-  </div>
-
-  <div class="item-container p-4 mt-2">
-    <p class="blue-text">Indicaciones</p>
-    <mat-form-field class="col">
-      <input matInput placeholder="" [(ngModel)]="indicaciones" />
-    </mat-form-field>
-  </div>
-
-  <div class="item-container mt-2">
-    <div class="d-flex flex-row-reverse pl-4 pr-4">
-      <button
-        mat-flat-button
-        class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue"
-        (click)="pdf()"
-      >
-        PDF
-      </button>
-      <button
-        mat-flat-button
-        class="prl-1 ml-2 mt-4 mb-3 col-lg-auto bg-blue"
-        (click)="guardar()"
-      >
-        Guardar
-      </button>
-      <button
-        mat-flat-button
-        class="prl-1 mt-4 mb-3 col-lg-auto bg-blue"
-        routerLink="../tabla-recetas"
-      >
-        Cancelar
-      </button>
-    </div>
-  </div>
+  </form>
 </div>

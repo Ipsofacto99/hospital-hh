@@ -23,10 +23,12 @@ import { RecetasScreenComponent } from './recetas-screen/recetas-screen.componen
 
 import { TablaUsuariosComponent } from './tabla-usuarios/tabla-usuarios.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { AdministradorScreenComponent } from './administrador-screen/administrador-screen.component';
+import { UsuariosScreenComponent } from './usuarios-screen/usuarios-screen.component';
 import { RecetaComponent } from './receta/receta.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -41,7 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     RecetasScreenComponent,
     TablaUsuariosComponent,
     UsuariosComponent,
-    AdministradorScreenComponent,
+    UsuariosScreenComponent,
     RecetaComponent
   ],
   imports: [
@@ -57,9 +59,14 @@ import { HttpClientModule } from '@angular/common/http';
     MatPaginatorModule,
     MatInputModule,
     MatCheckboxModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(overlayContainer: OverlayContainer) {
+    overlayContainer.getContainerElement().classList.add('dark-theme');
+  }
+}

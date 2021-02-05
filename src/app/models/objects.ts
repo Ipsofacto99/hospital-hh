@@ -7,11 +7,7 @@ export interface Usuario_tabla {
   nombre: string;
   id: number;
   usuario: string;
-  administrador: string;
-  medico: string;
-  medico_acesso_recetas: string;
-  responsable_sanitario: string;
-  mostrador_farmacia: string;
+  cargo: string;
 }
 
 export interface Usuario {
@@ -29,8 +25,10 @@ export interface Usuario {
 }
 
 export interface Usuario_medico {
-  nombre: string;
+  usuario: string;
   contrasenia: string;
+  cargo: string[];
+  medico: Medico;
 }
 
 //Recetas
@@ -57,7 +55,7 @@ export interface Medico {
   direccion: string;
 }
 
-export interface Paciente {
+export class Paciente {
   id: number;
   curp: string;
   nombre: string;

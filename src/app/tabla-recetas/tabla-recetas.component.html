@@ -1,0 +1,82 @@
+<div class="page-container p-4">
+<div class="item-container p-3"> 
+    <div class="row col-12">
+        <div class="col-md-6 col-lg-3">
+            <p class="blue-text p-1 m-0 "> Nombre: </p> <p class="p-1 m-0 "> {{ medico.nombre }} </p> 
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <p class="blue-text p-1 m-0 "> Universidad: </p> <p class="p-1 m-0 "> {{ medico.universidad }} </p> 
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <p class="blue-text p-1 m-0 "> Especialidad: </p> <p class="p-1 m-0 "> {{ medico.especialidad }} </p> 
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <p class="blue-text p-1 m-0 "> Cedula: </p> <p class="p-1 m-0 "> {{ medico.cedula }} </p> 
+        </div>
+    </div>
+</div>
+
+<div class="item-container p-4 mt-2"> 
+
+    <p class="blue-text"> Listado de recetas </p>
+
+    <mat-form-field class="col-12 filtro-bq pt-2 mb-2">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Información" #input class="input">
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" class="col-12" matSort>
+
+        <ng-container matColumnDef="folio">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matSortActive="folio"> Folio </th>
+            <td mat-cell *matCellDef="let row"> {{ row.folio }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+            <td mat-cell *matCellDef="let row"> {{ row.fecha }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="medico">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Médico </th>
+            <td mat-cell *matCellDef="let row"> {{ row.medico }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="paciente">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Paciente </th>
+            <td mat-cell *matCellDef="let row"> {{ row.paciente }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ver">
+            <th mat-header-cell *matHeaderCellDef> Ver </th>
+            <td mat-cell *matCellDef="let row"> 
+                <button class="m-2 btn btn-link" (click)="ver(row.usuario)"><i class="fa fa-eye"></i></button>
+
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="modificar">
+            <th mat-header-cell *matHeaderCellDef> Modificar </th>
+            <td mat-cell *matCellDef="let row"> 
+                <button class="m-2 btn btn-link" (click)="editar(row.usuario)"><i class="fa fa-edit"></i></button>
+
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <div *ngIf="dataSource.data.length === 0" class="col-12 text-center bg-gray p-3"> No hay datos </div>
+
+    <mat-paginator  [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+
+    <div class="d-flex flex-row-reverse">
+        <button mat-flat-button class="prl-1 mt-4 col-lg-auto bg-blue" (click)="agregarReceta()"> Generar nueva receta </button>
+    </div>
+</div>
+</div>

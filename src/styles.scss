@@ -1,1 +1,239 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/theming";
+@include mat-core();
+
+$my-app-primary: mat-palette($mat-indigo);
+$my-app-accent: mat-palette($mat-pink, A200, A100, A400);
+$my-app-theme: mat-dark-theme($my-app-primary, $my-app-accent);
+@include angular-material-theme($my-app-theme);
+
+$my-app-primary-d: mat-palette($mat-indigo);
+$my-app-accent-d: mat-palette($mat-indigo, A200, A100, A400);
+$my-app-dark-theme: mat-dark-theme($my-app-primary-d, $my-app-accent-d);
+
+.dark-theme {
+  @include angular-material-color($my-app-dark-theme);
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.headers {
+  height: 10vh;
+}
+
+/*.headers{
+  box-shadow: 0px 4px 16px 0px rgba(50, 50, 50, 0.467);
+  transition: height 0.1s ease-in;
+}
+
+.headers:hover {
+  height: 4.4em;
+}*/
+
+.example-card {
+  max-width: 325px;
+  max-height: 600px;
+  vertical-align: top;
+  box-shadow: 0px 8px 11px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.example-card:hover {
+  box-shadow: 0px 12px 16px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.example-header-image {
+  background-image: url("https://i.ibb.co/8xJMykc/logo.png[/img");
+  background-size: cover;
+}
+
+.cardlist-container {
+  margin: 10px;
+  display: inline-block;
+  vertical-align: top;
+  transition: margin-top 0.3s 0.09s;
+}
+
+.cardlist-container:hover {
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.btn-login {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+  background-color: transparent;
+  font-family: "Roboto", "Helvetica Neue";
+  font-weight: 500;
+  border: 0px;
+  outline: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-login:active {
+  transform: scale(0.98);
+  /* Scaling button to 0.98 to its original size */
+
+  /* Lowering the shadow */
+}
+
+.cardlist-container:hover .btn-login {
+  opacity: 1;
+}
+
+mat-card-title {
+  font-size: 16px !important;
+}
+mat-card-subtitle {
+  font-size: 14px;
+}
+
+.card-component {
+  margin: 20px;
+  padding-bottom: 5%;
+
+  text-align: center;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+
+  @media only screen and (max-width: 600px) {
+    .megatext{
+      font-size: 40px;
+      color: white;
+      padding-top:12%;
+      padding-left: 3%;
+      text-shadow: 2px 3px 0px #3d51b5;
+    }
+    .flat{
+      background-color:#3D51B5;
+      width: 94%;
+      height: 2600px;
+      margin-left: 3%;
+      margin-right: 3%;
+      margin-bottom: -2500px;
+      border-radius: 0px 0px 20px 20px;
+  
+    }
+ }
+ 
+ /* Small devices (portrait tablets and large phones, 600px and up) */
+
+ @media only screen and (min-width: 600px) {
+  .megatext{
+    font-size: 40px;
+    color: white;
+    padding-top:12%;
+    padding-left: 3%;
+   
+  }
+  .flat{
+    background-color:#3D51B5;
+    width: 94%;
+    height: 70%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: -400px;
+    border-radius: 0px 0px 20px 20px;
+
+  }
+ }
+ 
+ /* Medium devices (landscape tablets, 768px and up) */
+
+ @media only screen and (min-width: 768px) {
+  .megatext{
+    font-size: 80px;
+    color: white;
+    padding-top:8%;
+    padding-left: 3%;
+    text-shadow: 2px 3px 0px #3d51b5;
+  }
+  .flat{
+    background-color:#3D51B5;
+    width: 94%;
+    height: 1800px;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: -1650px;
+    border-radius: 0px 0px 20px 20px;
+
+  }
+ } 
+ 
+ /* Large devices (laptops/desktops, 992px and up) */
+
+ @media only screen and (min-width: 992px) {
+  .megatext{
+    font-size: 120px;
+    color: white;
+    padding-top:8%;
+    padding-left: 2%;
+    text-shadow: 4px 4px 0px #3d51b5;
+  }
+  .flat{
+    background-color:#3D51B5;
+    width: 94%;
+    height: 70%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: -400px;
+    border-radius: 0px 0px 20px 20px;
+
+  }
+ } 
+ 
+ /* Extra large devices (large laptops and desktops, 1200px and up) */
+
+ @media only screen and (min-width: 1200px) {
+  .megatext{
+    font-size: 120px;
+    color: white;
+    padding-top:8%;
+    padding-left: 2%;
+    text-shadow: 4px 4px 0px #3d51b5;
+  }
+  .flat{
+    background-color:#3D51B5;
+    width: 94%;
+    height: 70%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: -400px;
+    border-radius: 0px 0px 20px 20px;
+
+  }
+ }
+/**/
+
+.appfooter {
+  height: 14vh;
+
+  padding-bottom: 25px !important;
+  font-size: 14px;
+}
+
+.footer-info {
+  height: auto;
+  width: 60%;
+  text-align: justify;
+  align-content: center;
+  display: block;
+  white-space: break-spaces;
+  line-break: anywhere;
+  white-space: break-spaces;
+  line-height: 15px;
+  margin-top: 14px;
+}
+
+.subtitle {
+  font-weight: 200;
+  margin-bottom: 3px;
+}

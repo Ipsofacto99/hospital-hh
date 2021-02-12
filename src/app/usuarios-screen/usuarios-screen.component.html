@@ -1,0 +1,4 @@
+<header></header>
+<tabla-usuarios (idUsuario)="idUserOut($event)" (isObservable)="isObservable($event)" *ngIf="!observar"></tabla-usuarios>
+<usuario (isObservable)="isObservable($event)" [(idUser)]="idUser" *ngIf="observar"></usuario>
+<app-footer></app-footer>
